@@ -1,5 +1,5 @@
 /**
- * 
+ * Function to define a new customElement based on the module
  * @param {string} name both the name of the customElement that will be avalible in the html, and the directory to read the file from 
  */
 function def(name){
@@ -54,7 +54,7 @@ window.tabs = window.document.querySelector('page-tabs');
 
 
 /**
- * 
+ * Add the specified page to the users history
  * @param {string} url The specific url that was accessed
  * @param {string} title The title of the page
  */
@@ -62,7 +62,9 @@ function addToHistory(url,title){
     History.addItem({url:url,title:title,date:Date.now()});
 }
 
-
+/**
+ * Creates a new window
+ */
 window.makeNewWin = function makeNewWin(){
     var BrowserWindow = require('electron').remote.BrowserWindow;
     var win = new BrowserWindow({
@@ -81,6 +83,9 @@ window.makeNewWin = function makeNewWin(){
     win.loadFile(__dirname+'/../index.html');
 }
 
+/**
+ * Opens up the settings page so the user can edit their settings
+ */
 window.settingsWindow = function settingsWindow(){
     var BrowserWindow = require('electron').remote.BrowserWindow;
     var win = new BrowserWindow({
@@ -100,10 +105,16 @@ window.settingsWindow = function settingsWindow(){
     // win.openDevTools();
 }
 
+/**
+ * Opens the bookmarks page so the user can view and edit their bookmarks
+ */
 window.bookmarksWindow = function bookmarksWindow(){
     window.open('bookmarkspage.html')
 }
 
+/**
+ * Opens up the historyWindow so the user can view all the pages they have visited
+ */
 window.historyWindow = function historyWindow(){
     var BrowserWindow = require('electron').remote.BrowserWindow;
     var win = new BrowserWindow({
@@ -122,10 +133,20 @@ window.historyWindow = function historyWindow(){
     // win.openDevTools();
 }
 
+/**
+ * Sets the background color of the windows chrome - Mostly useless but will stay here because it might be useful at some point
+ * @param {number} r red
+ * @param {number} g green
+ * @param {number} b blue
+ */
 function changeChrome(r,g,b){
     document.querySelector('chrome').style.background = `rgb(${r},${g},${b})`;
 }
 
+/**
+ * The handler for when a user navigates to a new page
+ * @param {event} event 
+ */
 function handleWindowRequest(event){
     url = event.url;
     frameName = event.frameName;
@@ -138,6 +159,10 @@ function handleWindowRequest(event){
     makeWebv(url);
 }
 
+/**
+ * The handler for when the user hovers over a link
+ * @param {Event} event 
+ */
 function handleTargetUrl(event){
     //console.log(event);
 
@@ -152,35 +177,62 @@ function handleTargetUrl(event){
     }
 }
 
+/**
+ * Displays that the page has begun to load
+ * @param {event} e 
+ */
 function handleStartLoad(e){
     window.document.querySelector('ind').display = 'inline-block';
     window.document.querySelector('ind').innerHTML = 'loading...';
 }
 
+/**
+ * Removes the "loading..." text from the indicator
+ * @param {event} e 
+ */
 function handleStopLoad(e){
     window.document.querySelector('ind').display = 'none';
 }
 
+/**
+ * Handler for when the URL is updated
+ * @param {event} event 
+ */
 function handleURLUpdate(event){
     addToHistory(event.url,event.srcElement.getTitle());
 }
 
+/**
+ * Returns the current view based on the first one that is not hidden
+ */
 window.getCurrentView = function getCurrentView(){
     return window.document.querySelector('web--view:not([style="display: none;"])').view;
 }
 
+/**
+ * Opens developer tools for the current web page
+ */
 window.openTools = function openTools(){
     getCurrentView().openDevTools();
 }
 
+/**
+ * Minimizes the window
+ */
 function minimize(){
     require('electron').remote.getCurrentWindow().minimize();
 }
 
+/**
+ * Closes the window
+ */
 function close(){
     require('electron').remote.getCurrentWindow().close()
 }
 
+/**
+ * Maximizes the window
+ */
 function maximize(){
     if(thisWindow.isMaximized()){
         thisWindow.unmaximize();
@@ -189,19 +241,30 @@ function maximize(){
     }
 }
 
-
+/**
+ * Navigates back
+ */
 function pgBack(){
     window.document.querySelector('web--view:not([style="display: none;"])').view.goBack();
 }
 
+/**
+ * Navigates forward
+ */
 function pgForward(){
     window.document.querySelector('web--view:not([style="display: none;"])').view.goForward();
 }
 
+/**
+ * Refreshes the current page
+ */
 function pgRefresh(){
     window.document.querySelector('web--view:not([style="display: none;"])').view.reloadIgnoringCache();
 }
 
+/**
+ * puts the user input in the search input
+ */
 function focusSearchInput(){
     window.document.body.querySelector('search-bar').querySelector('sch-ipt').focus();
 }

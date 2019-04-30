@@ -106,6 +106,12 @@
         }},
         "20":{"files":{
             "password.html":"" 
+        }},
+        "21":{"files":{
+            "settings.html":"",
+            "scripts/settingsparser.js":"",
+            "scripts/elements/webview.js":"",
+            "index.html":""
         }}
     }
 }

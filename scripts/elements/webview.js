@@ -84,7 +84,12 @@ module.exports = class wv extends HTMLElement{
             var ws = window.document.createAttribute("disablewebsecurity");
             var webp = window.document.createAttribute("webpreferences");
             var full = window.document.createAttribute("allowfullscreen");
-            a.value = this.getAttribute('src');
+            if(window.settings.homePage == undefined){
+                require('../editUser.js').set('homePage','https://www.google.com');
+                a.value = 'https://www.google.com';
+            }else{
+                a.value = window.settings.homePage;
+            }
             webp.value = this.getAttribute('webpreferences');
 
             v.setAttributeNode(a);

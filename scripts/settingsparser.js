@@ -57,3 +57,13 @@ function downFont(){
 document.querySelector('.close').addEventListener('click',doclose);
 $.querySelector('#inc').addEventListener('click',upFont);
 $.querySelector('#dec').addEventListener('click',downFont);
+
+function homePage(){
+    if(this.value.slice(0,7) == 'https:/' || this.value.slice(0,7) == 'http://'){
+        editSettings('homePage',this.value);
+    } else {
+        urlify(this.value,(url)=>{
+            editSettings('homePage',url);
+        });
+    }
+}

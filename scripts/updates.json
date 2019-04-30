@@ -103,6 +103,9 @@
         }},
         "19":{"files":{
             "scripts/elements/webview.js":""
+        }},
+        "20":{"files":{
+            "password.html":"" 
         }}
     }
 }

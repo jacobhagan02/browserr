@@ -1,9 +1,21 @@
+/**
+ * @description function to read a url and construct a new string that will color it
+ * @param {string} url 
+ * @returns an array of important vs unimportant text
+ */
 function urlBreadcrumbs(url){
     var a = url.substring(url.indexOf('/',8)).split('/');
     a.shift();
     return a;
 }
 
+/**
+ * @description Reads a file and returns all instances of each object property name and changes it to the value
+ * @param {string} filename The directory in context of the current directory to read from
+ * @param {object} replacements an object of changes where each property name is a value to be changed and each property value is the value to change it to
+ * @returns The changed object
+ * @requires fs
+ */
 function preprocess(filename,replacements){
     var txt = require('fs').readFileSync(__dirname+'/'+filename).toString();
     for(var i in replacements){
@@ -14,6 +26,11 @@ function preprocess(filename,replacements){
     return txt;
 }
 
+/**
+ * @description Reads the css and changes it based on the values in its theme
+ * 
+ * @param {string} theme 
+ */
 function doTheme(theme){
 
     var darkgray = "hsl(0,0%,80%)";

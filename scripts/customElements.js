@@ -144,22 +144,6 @@ function changeChrome(r,g,b){
 }
 
 /**
- * The handler for when a user navigates to a new page
- * @param {event} event 
- */
-function handleWindowRequest(event){
-    url = event.url;
-    frameName = event.frameName;
-    disposition = event.disposition; /* can be one of: default, foreground-tab, background-tab, new-window, save-to-disk, other. */
-    options = event.options; /* like if you were to make a new browserWindow, its the exact same options as that */
-
-    // for now just make a new tab, but later add functionality for stuff like background tabs and stuff.
-    // downloads will be webview.downloadFile()
-    //console.log(url);
-    makeWebv(url);
-}
-
-/**
  * The handler for when the user hovers over a link
  * @param {Event} event 
  */

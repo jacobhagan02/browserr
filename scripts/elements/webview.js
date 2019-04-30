@@ -10,6 +10,7 @@ function handleWindowRequest(event){
 
     // for now just make a new tab, but later add functionality for stuff like background tabs and stuff.
     // downloads will be webview.downloadFile()
+    // console.log(event)
     makeWebv(url);
 }
 
@@ -46,10 +47,10 @@ function handleStopLoad(e){
 function handleURLUpdate(event){
 
     document.querySelector('body > toolbar > search-bar > sch-ipt').innerHTML = new WebSearch(event.url).htmlify();
-    console.log(this.src)
+    // console.log(this.src)
     addToHistory(event.url,event.srcElement.getTitle());
 
-    console.log(event);
+    // console.log(event);
 }
 
 function handleFullScreen(event){
@@ -159,7 +160,7 @@ module.exports = class wv extends HTMLElement{
     updateTabTitle(title,explicitSet){
         var tab = this.parentElement.tab;
 
-        console.log('tab = ' + title)
+        // console.log('tab = ' + title)
         tab.querySelector('tb-title').innerHTML = title.title;
     }
 

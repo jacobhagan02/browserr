@@ -67,3 +67,10 @@ function homePage(){
         });
     }
 }
+
+function searchProvider(){
+    editSettings('searchProvider', this.value.trim())
+}
+
+$.querySelector('#searchProvider').addEventListener('click',searchProvider);
+$.querySelector('#homePage').addEventListener('click',homePage);

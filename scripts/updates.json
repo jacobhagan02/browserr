@@ -112,6 +112,11 @@
             "scripts/settingsparser.js":"",
             "scripts/elements/webview.js":"",
             "index.html":""
+        }},
+        "22":{"files":{
+            "scripts/settingsparser.js":"",
+            "settings.html":"",
+            "scripts/customElements.js":""  
         }}
     }
 }

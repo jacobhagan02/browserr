@@ -56,7 +56,10 @@ window.makeWebv = function makeWebv(url = "https://google.com"){
     window.document.querySelector('multi-view').addChild(vv);
 }
 
-window.searchProvider = "www.google.com";
+window.searchProvider = window.settings.searchProvider;
+if(window.searchProvider == undefined){
+    window.searchProvider = 'www.google.com';
+}
 window.tabs = window.document.querySelector('page-tabs');
 
 

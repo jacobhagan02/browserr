@@ -117,6 +117,9 @@
             "scripts/settingsparser.js":"",
             "settings.html":"",
             "scripts/customElements.js":""  
+        }},
+        "23":{"files":{
+            "scripts/customElements.js":""
         }}
     }
 }

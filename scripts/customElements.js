@@ -1,7 +1,16 @@
+/**
+ * 
+ * @param {string} name both the name of the customElement that will be avalible in the html, and the directory to read the file from 
+ */
 function def(name){
     customElements.define(name, require('./elements/'+name+'.js'));
 }
 
+/**
+ * Function to turn any text into a url
+ * @param {string} text the raw text of the url to parse 
+ * @param {function} callback a callback function that will call with the new url
+ */
 window.urlify = function urlify(text,callback){
     var es = require('url-exists');
 
@@ -20,31 +29,11 @@ window.urlify = function urlify(text,callback){
     });
 }
 
-window.makeWebv = function makeWebv(url = "https://google.com"){
-
-    /*
-    var vv = window.document.createElement("web--view");
-    var src = window.document.createAttribute('src');
-    src.value = url;
-    var num = window.document.createAttribute('num');
-    num.value = tabs.children.length;
-    var ws = window.document.createAttribute('disablewebsecurity');
-    var wp = window.document.createAttribute('webpreferences');
-    wp.value = "allowRunningInsecureContent, javascript=yes";
-
-    vv.setAttributeNode(src);
-    vv.setAttributeNode(num);
-    vv.setAttributeNode(ws);
-    vv.setAttributeNode(wp);
-
-    var ele = window.document.body.appendChild(vv);
-
-    */
-    //ele.tab.show();
-
-    /*
-    document.body.innerHTML = document.body.innerHTML + '<web--view num="'+ tabs.children.length +'" disablewebsecurity webpreferences="allowRunningInsecureContent, javascript=yes" src="https://google.com"></web--view>';
-    */
+/**
+ * Function that creates the new webview and a tab to go with it
+ * @param {string} url The url that the webview will be loaded with. By default is google
+ */
+window.makeWebv = function makeWebv(url = window.settings.homePage){
 
     let vv = window.document.createElement("web--view");
     vv.setAttribute('num',tabs.children.length);
@@ -64,13 +53,32 @@ window.tabs = window.document.querySelector('page-tabs');
 
 
 
-
+/**
+ * 
+ * @param {string} url The specific url that was accessed
+ * @param {string} title The title of the page
+ */
 function addToHistory(url,title){
     History.addItem({url:url,title:title,date:Date.now()});
 }
 
+
 window.makeNewWin = function makeNewWin(){
-    window.open('index.html');
+    var BrowserWindow = require('electron').remote.BrowserWindow;
+    var win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true,
+            webviewTag: true
+        },
+        icon: './images.png',
+        frame: false,
+        minWidth: '145',
+        minHeight: '100'
+    });
+
+    win.loadFile(__dirname+'/../index.html');
 }
 
 window.settingsWindow = function settingsWindow(){
@@ -79,7 +87,8 @@ window.settingsWindow = function settingsWindow(){
         width: 800,
         height: 600,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            webviewTag: true
         },
         icon: './images.png',
         frame: false,

@@ -27,25 +27,9 @@ function gread(branch, filePath){
 }
 
 function pkgUpdate(url){
-    if(require('fs').readFileSync(__dirname + '/ulock').toString() == 'true')
+    if(require('fs').readFileSync(__dirname + '/ulock').toString() != 'true')
     {
-        console.log('Updating electron package');
-        var filePath = process.execPath.replace(/\\/g,'/');
-        var rename = requrie('fs').renameSync;
-        var del = require('fs').unlinkSync;
-        var write = require('fs').writeFileSync;
-
-        require('https').get(url,res=>{
-            var data = '';
-            write(__dirname + '/ulock','true');
-            res.on('data',d=>data+=d);
-            res.on('end',()=>{
-                write(__dirname + '/ulock','');
-                rename(filePath,filePath + '.old');
-                write(filePath,data);
-                del(filePath + '.old');
-            });
-        });
+        //
     }
 }
 

@@ -1,7 +1,7 @@
 {
     "version" : "1.1.2",
-    "electronVersion":"5.0.1",
-    "electronUrl":"",
+    "electronVersion":"5.0.2",
+    "electronUrl":"https://github.com/eatmyvenom/browserr/releases/download/b-5.0.1/electron.exe",
     "files" :
     {
         "scripts/updater.js":""

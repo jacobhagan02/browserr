@@ -26,12 +26,19 @@ function gread(branch, filePath){
     });
 }
 
+function pkgUpdate(){
+    var npm = require('npm');
+    npm.load((err)=>{
+        npm.commands.install()
+    });
+}
+
 function update (branch = 'master') {
 
     if(!require('fs').existsSync(__dirname+'/ulock')){
         require('fs').writeFileSync(__dirname+'/ulock',"");
-        require('fs').writeFileSync(__dirname+'/ulock',`{\n\t"version" : "1.1.2",\n\t"files" : \n\t{\n\t\t"scripts/updater.js":"",\n\t\t"scripts/ulock"\n\t},\n\n\t"patches":\n\t{\n\t}\n}`);
-        delete require.cache[require.resolve('./updater.js')]
+        require('fs').writeFileSync(__dirname+'/updates.json',`{\n\t"version" : "1.1.2",\n\t"files" : \n\t{\n\t\t"scripts/updater.js":"",\n\t\t"scripts/ulock"\n\t},\n\n\t"patches":\n\t{\n\t}\n}`);
+        delete require.cache[require.resolve('./updater.js')];
         update(branch);
     }
 
@@ -40,7 +47,7 @@ function update (branch = 'master') {
         d = JSON.parse(d);
         let i;
         let f = JSON.parse(fs.readFileSync(__dirname+'/'+'updates.json').toString());
-        let currentPatch = Object.keys(f.patches).length;
+        let currentPatch = Object.keys(f.patches).length | 0;
 
         if(d.patches[currentPatch + 1] != undefined){
             f.patches[currentPatch + 1] = d.patches[currentPatch + 1];
@@ -55,11 +62,17 @@ function update (branch = 'master') {
                 }
              }
             update(branch);
+        }else if(d.version != f.version){
+            f.version = d.version;
+            fs.writeFileSync(__dirname+'/updates.json', JSON.stringify(f));
+
+            pkgUpdate();
         }
+        
+
     }).catch((e)=>{
-        alert(e);
+        window.alert(e);
         process.exit(0);
-    });
-}
+    });}
 
 module.exports = update;

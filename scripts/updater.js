@@ -26,18 +26,18 @@ function gread(branch, filePath){
     });
 }
 
-function pkgUpdate(url){
-    if(require('fs').readFileSync(__dirname + '/ulock').toString() != 'true')
-    {
-        //
-    }
+function pkgUpdate(){
+    var npm = require('npm');
+    npm.load((err)=>{
+        npm.commands.install()
+    });
 }
 
 function update (branch = 'master') {
 
     if(!require('fs').existsSync(__dirname+'/ulock')){
         require('fs').writeFileSync(__dirname+'/ulock',"");
-        require('fs').writeFileSync(__dirname+'/ulock',`{\n\t"version" : "1.1.2",\n\t"files" : \n\t{\n\t\t"scripts/updater.js":"",\n\t\t"scripts/ulock"\n\t},\n\n\t"patches":\n\t{\n\t}\n}`);
+        require('fs').writeFileSync(__dirname+'/updates.json',`{\n\t"version" : "1.1.2",\n\t"files" : \n\t{\n\t\t"scripts/updater.js":"",\n\t\t"scripts/ulock"\n\t},\n\n\t"patches":\n\t{\n\t}\n}`);
         delete require.cache[require.resolve('./updater.js')];
         update(branch);
     }
@@ -62,15 +62,13 @@ function update (branch = 'master') {
                 }
              }
             update(branch);
-        }
-        else if(d.electronVersion != f.electronVersion){
-            f.electronVersion = d.electronVersion;
-            f.electronUrl = d.electronUrl;
+        }else if(d.version != f.version){
+            f.version = d.version;
             fs.writeFileSync(__dirname+'/updates.json', JSON.stringify(f));
-            
-            pkgUpdate(f.electronUrl);
 
+            pkgUpdate();
         }
+        
 
     }).catch((e)=>{
         window.alert(e);

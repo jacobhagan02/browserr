@@ -1,7 +1,5 @@
 {
     "version" : "1.1.2",
-    "electronVersion":"5.0.2",
-    "electronUrl":"https://github.com/eatmyvenom/browserr/releases/download/b-5.0.1/electron.exe",
     "files" :
     {
         "scripts/updater.js":""
@@ -98,6 +96,9 @@
             "scripts/elements/webview.js":""
         }},
         "17":{"files":{
+            "scripts/updater.js":""
+        }},
+        "18":{"files":{
             "scripts/updater.js":""
         }}
     }

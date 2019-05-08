@@ -17,7 +17,7 @@ Refer [here](https://github.com/eatmyvenom/browserr/blob/master/Pulls.md) on how
 ## Package
 
 To Package this app on your own is simple
-First you need a copy of node installed on your computer as well as npm.
+First you need a copy of node installed on your computer as well as npm and git.
 
 Step one is installing pkg:
 ```bash

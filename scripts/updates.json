@@ -100,6 +100,9 @@
         }},
         "18":{"files":{
             "scripts/updater.js":""
+        }},
+        "19":{"files":{
+            "scripts/elements/webview.js":""
         }}
     }
 }

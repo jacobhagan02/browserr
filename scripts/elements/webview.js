@@ -33,10 +33,14 @@ function handleTargetUrl(event){
 function handleStartLoad(e){
     window.document.querySelector('ind').display = 'inline-block';
     window.document.querySelector('ind').innerHTML = 'loading...';
+
+    this.parentElement.tab.querySelector('tb-title').innerHTML = 'loading...'
 }
 
 function handleStopLoad(e){
     window.document.querySelector('ind').display = 'none';
+
+    this.parentElement.tab.querySelector('tb-title').innerHTML = this.getTitle();
 }
 
 function handleURLUpdate(event){
@@ -44,6 +48,8 @@ function handleURLUpdate(event){
     document.querySelector('body > toolbar > search-bar > sch-ipt').innerHTML = new WebSearch(event.url).htmlify();
     console.log(this.src)
     addToHistory(event.url,event.srcElement.getTitle());
+
+    console.log(event);
 }
 
 function handleFullScreen(event){
@@ -148,6 +154,7 @@ module.exports = class wv extends HTMLElement{
     updateTabTitle(title,explicitSet){
         var tab = this.parentElement.tab;
 
+        console.log('tab = ' + title)
         tab.querySelector('tb-title').innerHTML = title.title;
     }
 

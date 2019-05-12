@@ -8,12 +8,13 @@ function openWindow(openurl) {
         width: 800,
         height: 600,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            webviewTag:true
         },
         icon: './images.png',
         frame: false,
-        minWidth: '145',
-        minHeight: '100'
+        minWidth: 500,
+        minHeight: 400
     });
 
     win.loadFile(__dirname+'/index.html');

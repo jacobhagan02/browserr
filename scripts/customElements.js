@@ -304,3 +304,4 @@ def('add-mark');
 def('full-query');
 def('multi-view');
 def('m-settings');
+def('text-finder');

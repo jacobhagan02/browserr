@@ -120,6 +120,17 @@
         }},
         "23":{"files":{
             "scripts/customElements.js":""
+        }},
+        "24":{"files":{
+            "index.html":"",
+            "main.js":"",
+            "password.html":"",
+            "style.css":"",
+            "scripts/customElements.js":"",
+            "scripts/tabContext.js":"",
+            "scripts/webviewPreload.js":"",
+            "scripts/webviewele.js":"",
+            "scripts/elements/text-finder.js":""
         }}
     }
 }

@@ -446,3 +446,36 @@ multi-view{
     overflow:none;
     height:calc(100vh - 111.5px);
 }
+
+text-finder{
+    background:darkgrey;
+    display:none;
+    position: absolute;
+    top: 80px;
+    right:15px;
+    width:300px;
+    height: 35px;
+    z-index: 1;
+}
+
+text-finder > input{
+    /* border-width: 2px; */
+    width: 270px;
+    height:100%;
+    top: 0px;
+    position: absolute;
+}
+
+text-finder > button{
+    width:29px;
+    height:100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background:darkgray;
+    border:none;
+}
+
+text-finder > button > svg{
+    zoom: 0.75;
+}

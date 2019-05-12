@@ -20,8 +20,8 @@ function createWindow () {
     icon: './svgs/images.png',
     frame: false,
     backgroundColor: '#ffffff',
-    minWidth: '145',
-    minHeight: '100'
+    minWidth: 400,
+    minHeight: 300
   });
 
   // and load the password.html of the app.

@@ -253,6 +253,17 @@ function focusSearchInput(){
     window.document.body.querySelector('search-bar').querySelector('sch-ipt').focus();
 }
 
+function downloadPage(){
+    var dialog = require('electron').remote.dialog
+    
+    dialog.showSaveDialog({title:"Save Page"},(path)=>{
+        getCurrentView().getWebContents().savePage(path,'MHTML',(e)=>{
+            if(!e){}
+        });
+    });
+    
+}
+
 const settings = window.settings;
 require('./docload.js');
 var svgs = require('./icons.js');

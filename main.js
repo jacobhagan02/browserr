@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
-const {ipcMain, app, BrowserWindow, Tray, Menu, MenuItem, Accelerator, Notification, shell, nativeImage} = require('electron')
+const {ipcMain, app, BrowserWindow, session, Tray, Menu, MenuItem, Accelerator, Notification, shell, nativeImage} = require('electron')
+const JSON5 = require('json5');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -8,6 +9,7 @@ let tray = null;
 let branch = 'nightly';
 let debugging = false;
 let offline = false;
+let redirs = require('./scripts/redirs.js')
 
 function createWindow () {
   // Create the browser window.
@@ -36,7 +38,16 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
-  })
+  });
+
+  session.defaultSession.webRequest.onBeforeRequest((details,callback)=>{
+    // console.log(details);
+
+    var url = details.url
+
+    redirs(url,callback)
+    // callback(response);
+  });
 }
 
 // This method will be called when Electron has finished
@@ -101,3 +112,4 @@ ipcMain.on('set-user',(event,value)=>{
 ipcMain.on('get-user',(event,value)=>{
     event.returnValue = user;
 });
+

@@ -134,6 +134,13 @@
         }},
         "25":{"files":{
             "scripts/customElements.js":""  
+        }},
+        "26":{"files":{
+            "cache":"mkdir",
+            "package.json":"",
+            "package-lock.json":"",
+            "main.js":"",
+            "scripts/redirects.js":""
         }}
     }
 }

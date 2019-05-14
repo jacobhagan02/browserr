@@ -9,7 +9,7 @@ let tray = null;
 let branch = 'nightly';
 let debugging = false;
 let offline = false;
-let redirs = require('./scripts/redirs.js')
+let redirs = require('./scripts/redirects.js')
 
 function createWindow () {
   // Create the browser window.

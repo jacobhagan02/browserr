@@ -1,6 +1,30 @@
 const History = require('../history.js').History;
-const WebSearch = require('../websearch.js')
+const WebSearch = require('../websearch.js');
+const os = require('os');
+const path = require('path');
 var nonPageItems = [document.querySelector('tabBar'), document.querySelector('toolbar'), document.querySelector('book-marks')];
+
+function packageURL(url,title){
+    var packer = require('electron-packager');
+    var dialog = require('electron').remote.dialog;
+
+    require('fs').mkdtemp(path.join(os.tmpdir()),'browserr',title,(e,f)=>{
+        if(e) throw e;
+        require('fs').writeFileSync(path.join(f,'/main.js'), constructMain(url));
+        require('fs').writeFileSync(path.join(f,'package.json'),constructPackage(title));
+
+        dialog.showSaveDialog({title:'Save app',buttonLabel:'Save'},(fileName)=>{
+            packer({dir: f,executableName:title,out:fileName,platform:process.platform,arch:os.arch()});
+        });
+    });
+
+    function constructMain(url){
+    `const {app, BrowserWindow = require('electron');\nlet mainWindow;\nfunction createWindow(){\nmainWindow=new BrowserWindow({\nwidth:800,\nheight:600,\nwebPreferences:{\nnodeIntegration:true\n}\n});\nmainWindow.loadURL('${url}');\nmainWindow.on('closed',n=> mainWindow=null)\n};\napp.on('ready',createWindow);\napp.on('window-all-closed',n=>{if(process.platform!=='darwin') app.quit});\napp.on('activate',n=>{if(mainWindow===null) createWindow()});`;
+    }
+    function constructPackage(title){
+        `{"name":"${title.substring(title.indexOf(' '))}","version":"1.0.0","description":"","main":"main.js","scripts":{"start":"electron ."},"author":"eatmyvenom"}`
+    }
+}
 
 function handleWindowRequest(event){
     url = event.url;

@@ -172,7 +172,7 @@ settingsbtn:hover{
     border-color:black;
 }
 
-st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,m-settings,st-label{
+st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,m-settings,st-label,st-pkg{
     display:block;
     width:130px;
     padding:5px;
@@ -187,7 +187,7 @@ page-zoom{
     justify-content: space-evenly;
 }
 
-st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,m-settings:hover,page-zoom:hover,st-label:hover{
+st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,m-settings:hover,page-zoom:hover,st-label:hover,st-pkg:hover{
     border: 1px solid black;
     background: rgb(230,230,230);
     padding: 7.5px;

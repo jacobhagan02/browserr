@@ -158,6 +158,18 @@
         "29":{"files":{
             "package-lock.json":"",
             "package.json":""
+        }},
+        "30":{"files":{
+            "package-lock.json":"",
+            "package.json":"",
+            "scripts/redirects.js":"",
+            "index.html":"",
+            "password.html":"",
+            "style.css":"",
+            "scripts/icons.js":"",
+            "scripts/elements/ch-exit":"",
+            "scripts/elements/ch-max.js":"",
+            "scripts/elements/ch-min.js":""
         }}
     }
 }

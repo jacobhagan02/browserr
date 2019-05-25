@@ -21,7 +21,10 @@ module.exports = (URL,callback) =>{
             jqueryC : "node_modules/jquery/dist/core.js",
             sizzleJ : "node_modules/jquery/external/sizzle/sizzle.min.js",
             sizzleM : "node_modules/jquery/external/sizzle/sizzle.min.map",
-            reqjs : "cache/require.min.js"
+            reqjs : "cache/require.min.js",
+            vueJS : "node_modules/vue/dist/vue.min.js",
+            vueR : "node_modules/vue-router/dist/vue-router.js",
+            babel : "node_modules/@babel/standalone/babel.min.js"
         }
 
         const tests = { 
@@ -37,7 +40,10 @@ module.exports = (URL,callback) =>{
             jquerySM : /jquery(-[0-9]\.[0-9]\.[0-9])?\.slim(-[0-9]\.[0-9]\.[0-9])?\.min\.map/,
             sizzleJ : /sizzle(-[0-9]\.[0-9]\.[0-9])?\.js/,
             sizzleM : /sizzle(-[0-9]\.[0-9]\.[0-9])?\.min(-[0-9]\.[0-9]\.[0-9])?\.map/,
-            reqjs : /require(\.min)\.js/
+            reqjs : /require(\.min)?\.js/,
+            vueJS : /vue-router(\.min)?\.js/,
+            vueR : /vue(\.min)?\.js/,
+            babel : /babel(\.min)?\.js/
         }
 
 

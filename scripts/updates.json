@@ -167,7 +167,7 @@
             "password.html":"",
             "style.css":"",
             "scripts/icons.js":"",
-            "scripts/elements/ch-exit":"",
+            "scripts/elements/ch-exit.js":"",
             "scripts/elements/ch-max.js":"",
             "scripts/elements/ch-min.js":""
         }},
@@ -183,6 +183,9 @@
         }},
         "33":{"files":{
             "scripts/elements/st-pkg.js":""
+        }},
+        "34":{"files":{
+            "scripts/elements/ch-exit.js":""
         }}
     }
 }

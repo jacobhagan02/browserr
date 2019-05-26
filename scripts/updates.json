@@ -178,7 +178,8 @@
             "style.css":""
         }},
         "32":{"files":{
-            "main.js":""
+            "main.js":"",
+            "scripts/elements/st-pkg.js":""
         }}
     }
 }

@@ -176,6 +176,9 @@
             "package.json":"",
             "scripts/redirects.js":"",
             "style.css":""
+        }},
+        "32":{"files":{
+            "main.js":""
         }}
     }
 }

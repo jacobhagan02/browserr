@@ -1,6 +1,6 @@
 // Modules to control application life and create native browser window
 const {ipcMain, app, BrowserWindow, session, Tray, Menu, MenuItem, Accelerator, Notification, shell, nativeImage} = require('electron')
-const JSON5 = require('json5');
+// const JSON5 = require('json5');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

@@ -24,7 +24,9 @@ module.exports = (URL,callback) =>{
             reqjs : "cache/require.min.js",
             vueJS : "node_modules/vue/dist/vue.min.js",
             vueR : "node_modules/vue-router/dist/vue-router.js",
-            babel : "node_modules/@babel/standalone/babel.min.js"
+            babel : "node_modules/@babel/standalone/babel.min.js",
+            react : "node_modules/react/umd/react.production.min.js",
+            reactdom: "/home/jacobhagan2002/electron/browserr/node_modules/react-dom/umd/react-dom.production.min.js"
         }
 
         const tests = { 
@@ -43,7 +45,9 @@ module.exports = (URL,callback) =>{
             reqjs : /require(\.min)?\.js/,
             vueJS : /vue-router(\.min)?\.js/,
             vueR : /vue(\.min)?\.js/,
-            babel : /babel(\.min)?\.js/
+            babel : /babel(\.min)?\.js/,
+            react : /react\.production(\.min)?\.js/,
+            reactdom : /react-dom(\.production)?(\.min)?\.js/
         }
 
 
@@ -55,7 +59,7 @@ module.exports = (URL,callback) =>{
         if(URL === og){
             callback({});
         }else{
-            console.log('\n\nREDIRECT\n\n');
+            // console.log('\n\nREDIRECT\n\n');
             callback({cancel: false, redirectURL : URL});
         }
     }

@@ -317,3 +317,4 @@ def('multi-view');
 def('m-settings');
 def('text-finder');
 def('st-pkg');
+def('settings-btn');

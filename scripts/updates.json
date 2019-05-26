@@ -200,6 +200,14 @@
         "38":{"files":{}},
         "39":{"files":{
             "scripts/updater.js":""
+        }},
+        "40":{"files":{
+            "index.html":"",
+            "settings.html":"",
+            "style.css":"",
+            "scripts/customElements.js":"",
+            "scripts/elements/settings-btn.js":"",
+            "password.html":""
         }}
     }
 }

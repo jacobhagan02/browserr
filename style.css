@@ -167,35 +167,36 @@ other-settings{
     border-color:black;
 }
 
-settingsbtn{
+settings-btn{
     height:25px;
     width:25px;
-    display:block;
+    display:inline-block;
 
-    float:right;
+    /* float:right; */
     display:relative;
     top: -2px;
 
-    border-style:solid;
-    border-width:2px;
-    border-color:white;
-    border-bottom:none;
+    /* border-style:solid; */
+    /* border-width:2px; */
+    /* border-color:white; */
+    border-radius: 50%;
+    /* border-bottom:none; */
 }
 
-settingsbtn:hover{
-    display:inline-block;
+settings-btn:hover{
+    /* display:inline-block; */
     background: lightgrey;
-    border-color:black;
+    /* border-color:black; */
 }
 
-st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,m-settings,st-label,st-pkg{
+/*st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,m-settings,st-label,st-pkg{
     display:block;
     width:130px;
     padding:5px;
     border: 1px solid darkgray;
     border-radius:5px;
     -webkit-user-select: none;
-}
+}*/
 
 page-zoom{
     display: flex;
@@ -203,7 +204,7 @@ page-zoom{
     justify-content: space-evenly;
 }
 
-st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,m-settings:hover,page-zoom:hover,st-label:hover,st-pkg:hover{
+/*st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,m-settings:hover,page-zoom:hover,st-label:hover,st-pkg:hover{
     border: 1px solid black;
     background: rgb(230,230,230);
     padding: 7.5px;
@@ -211,9 +212,9 @@ st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover
 
 st-br{
     border:none;
-}
+}*/
 
-settingsbtn:hover other-settings, other-settings:hover{
+settingsbtn:hover other-settings, other-settings > img{
     display:inline-block;
 }
 

@@ -11,6 +11,10 @@
                 zoom: 1.2;
             }
 
+            chrome{
+                height:30px!important;
+            }
+
             button{
                 border-radius: 20px;
                 border-style: solid;
@@ -75,6 +79,10 @@
                 width:15px;
                 text-align: center;
                 transition-duration: 0.3s;
+                font-size: 11px;
+                font-weight: 600;
+                position: relative;
+                top: -2.5px;
             }
             #inc{
                 border-bottom:0px;
@@ -138,10 +146,10 @@
 
             Icon Pack<br>
             <input name='icpp' id='icpp' type="radio" value="fontAwesome" />Font Awesome<br>
-            <input name='icpp' id='icpp' type="radio" value="google" />Material
+            <input name='icpp' id='icpp' type="radio" value="google" />Material<br><br>
 
             Home Page<br>
-            <input id='homePage' type='text' placeholder="https://google.com" />
+            <input id='homePage' type='text' placeholder="https://google.com" /><br><br>
 
             Search Provider<br>
             <input id='searchProvider' type='text' placeholder="www.google.com" />
@@ -157,6 +165,7 @@
             window.settings = require('electron').ipcRenderer.sendSync('get-user','');
             require('./scripts/renderer.js');
             require('./scripts/settingsparser.js');
+            // require('electron').remote.getCurrentWindow().openDevTools();
         </script>
 
     </body>

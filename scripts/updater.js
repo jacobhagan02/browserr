@@ -2,9 +2,9 @@ const https = require('https');
 const fs = require('fs');
 var notification;
 if(require('electron').remote){
-    notification = require('electron').remote.Notification;
+    notification = require('electron').remote.dialog;
 }else{
-    notification = require('electron').Notification;
+    notification = require('electron').dialog;
 }
 
 function read(branch, filePath){
@@ -37,8 +37,7 @@ function pkgUpdate(){
     npm.load((err)=>{
         npm.commands.install();
 
-        var finished = notification.showMessageBox({title:'Browserr',message:"update finished downloading",buttons:[]});
-        finished.show();
+        notification.showMessageBox({title:'Browserr',message:"update finished downloading",buttons:[]});
     });
 }
 
@@ -52,6 +51,7 @@ function update (branch = 'master') {
     }
 
     gread(branch,'scripts/updates.json').then((d)=>{
+        // notification.showMessageBox({title:'Browserr',message:"update finished downloading",buttons:[]});
         if(d == '404: Not Found') return;
         d = JSON.parse(d);
         let i;
@@ -80,7 +80,11 @@ function update (branch = 'master') {
         
 
     }).catch((e)=>{
-        window.alert(e);
+        // if(window){
+            // window.alert(e);
+        // }else{
+            console.trace(e);
+        // }
         process.exit(0);
     });}
 

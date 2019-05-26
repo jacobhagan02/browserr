@@ -197,6 +197,9 @@
         "37":{"files":{
             "scripts/updater.js":""
         }},
-        "38":{"files":{}}
+        "38":{"files":{}},
+        "39":{"files":{
+            "scripts/updater.js":""
+        }}
     }
 }

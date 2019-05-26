@@ -180,6 +180,9 @@
         "32":{"files":{
             "main.js":"",
             "scripts/elements/st-pkg.js":""
+        }},
+        "33":{"files":{
+            "scripts/elements/st-pkg.js":""
         }}
     }
 }

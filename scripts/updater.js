@@ -1,5 +1,11 @@
 const https = require('https');
 const fs = require('fs');
+var notification;
+if(require('electron').remote){
+    notification = require('electron').remote.Notification;
+}else{
+    notification = require('electron').Notification;
+}
 
 function read(branch, filePath){
     var url = 'https://raw.githubusercontent.com/eatmyvenom/browserr/' + branch + '/' + filePath;
@@ -29,7 +35,9 @@ function gread(branch, filePath){
 function pkgUpdate(){
     var npm = require('npm');
     npm.load((err)=>{
-        npm.commands.install()
+        npm.commands.install();
+        var finished = new notification({title:'Browserr',body:"update finished downloading"});
+        finished.show();
     });
 }
 

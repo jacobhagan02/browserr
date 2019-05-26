@@ -185,7 +185,8 @@
             "scripts/elements/st-pkg.js":""
         }},
         "34":{"files":{
-            "scripts/elements/ch-exit.js":""
+            "scripts/elements/ch-exit.js":"",
+            "scripts/updater.js":""
         }}
     }
 }

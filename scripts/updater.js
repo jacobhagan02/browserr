@@ -36,6 +36,7 @@ function pkgUpdate(){
     var npm = require('npm');
     npm.load((err)=>{
         npm.commands.install();
+        
         var finished = new notification({title:'Browserr',body:"update finished downloading"});
         finished.show();
     });

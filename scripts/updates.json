@@ -187,6 +187,12 @@
         "34":{"files":{
             "scripts/elements/ch-exit.js":"",
             "scripts/updater.js":""
+        }},
+        "35":{"files":{
+            "scripts/updater.js":""
+        }},
+        "36":{"files":{
+            "scripts/updater.js":""
         }}
     }
 }

@@ -193,6 +193,9 @@
         }},
         "36":{"files":{
             "scripts/updater.js":""
+        }},
+        "37":{"files":{
+            "scripts/updater.js":""
         }}
     }
 }

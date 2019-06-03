@@ -25,7 +25,7 @@ module.exports = class extends HTMLElement {
     }
 
     settingsMenu(e){
-        console.log(e);
+        // console.log(e);
         var Menu = require('electron').remote.Menu;
 
         var mnu = Menu.buildFromTemplate([

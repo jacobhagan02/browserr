@@ -208,6 +208,15 @@
             "scripts/customElements.js":"",
             "scripts/elements/settings-btn.js":"",
             "password.html":""
+        }},
+        "41":{"files":{
+            "assetPage.html":"",
+            "index.html":"",
+            "main.js":"",
+            "scripts/elements/multi-view.js":"",
+            "scripts/elements/pg-tab.js":"",
+            "scripts/elements/settings-btn.js":"",
+            "scripts/elements/webview.js":""
         }}
     }
 }

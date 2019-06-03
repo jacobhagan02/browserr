@@ -3,11 +3,28 @@ const WebSearch = require('../websearch.js');
 const os = require('os');
 const path = require('path');
 var nonPageItems = [document.querySelector('tabBar'), document.querySelector('toolbar'), document.querySelector('book-marks')];
-
+var pageLog = [];
 
 function packagePage(url,title){
     
     // Make this just a shortcut to the main app with command line args for the url
+}
+
+function attachRedirect(d,c){
+    if(d.resourceType == 'mainFrame'){
+        window.settings.h[window.settings.h.length - 1].pageLog = pageLog;
+        console.log(window.settings.h)
+        pageLog = [d.url];
+    }else{
+        pageLog.push(d.url);
+    }
+
+    require('../redirects.js')(d.url,c);
+}
+
+function handleReady(){
+    // console.log(this.getWebContents())
+    this.getWebContents().session.webRequest.onBeforeRequest(attachRedirect);
 }
 
 function handleWindowRequest(event){
@@ -118,7 +135,9 @@ module.exports = class wv extends HTMLElement{
             web.addEventListener('did-stop-loading',handleStopLoad);
             web.addEventListener('enter-html-full-screen', handleFullScreen);
             web.addEventListener('leave-html-full-screen', handleNormalScreen);
+            web.addEventListener('dom-ready',handleReady);
             web.setAttribute('preload',`file://${__dirname}/../webviewPreload.js`);
+           
 
             var toptab = window.document.createElement("pg-tab");
             toptab.num = tabs.children.length;
@@ -127,6 +146,7 @@ module.exports = class wv extends HTMLElement{
 
         }
     }
+
 
     hide(){
         this.style.display = 'none';
@@ -153,8 +173,16 @@ module.exports = class wv extends HTMLElement{
         this.setAttribute("num",n);
     }
 
+    get session(){
+        this.view.getWebContents().session;
+    }
+
     remove(){
         this.parentElement.removeChild(this);
+    }
+
+    assets(){
+        return pageLog;
     }
 
     searchBarUpdate(){

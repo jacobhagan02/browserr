@@ -64,8 +64,34 @@ module.exports = class extends HTMLElement {
             ele.togglePin();
         };
 
+        function handleAssets(){
+            var BrowserWindow  = remote.BrowserWindow;
+
+            var assWin = new BrowserWindow({
+                width: 300,
+                height: 400,
+                webPreferences: {
+                  nodeIntegration: true
+                },
+                //icon: './svgs/images.png',
+                frame: false,
+                backgroundColor: '#ffffff',
+                minWidth: 200,
+                minHeight: 100
+            });
+
+            assWin.loadFile(__dirname+'/../../assetPage.html');
+            assWin.openDevTools();
+
+            var arg = "['" + ele.view.assets().join("','").toString() + "']";
+            console.log(arg);   
+
+            assWin.webContents.executeJavaScript('addAssets(' + arg + ')',function(){console.log(arguments)});
+        }
+
         var mnu = Menu.buildFromTemplate([
-            { label : 'Pin' , click: handlePin }
+            { label : 'Pin' , click: handlePin },
+            { label : 'Page Assets' , click: handleAssets }
         ]);
 
         mnu.popup();
@@ -77,6 +103,10 @@ module.exports = class extends HTMLElement {
 
     unpin(){
         this.setAttribute('unclosable','false');
+    }
+
+    showAssets(){
+
     }
 
     togglePin(){

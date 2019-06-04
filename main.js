@@ -6,7 +6,7 @@ const {ipcMain, app, BrowserWindow, session, Tray, Menu, MenuItem, Accelerator, 
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let tray = null;
-let branch = 'beta';
+let branch = 'nightly';
 let debugging = false;
 let offline = false;
 let redirs = require('./scripts/redirects.js')

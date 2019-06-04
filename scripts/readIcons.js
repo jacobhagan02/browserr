@@ -1,4 +1,13 @@
+
+/**
+ * @class IconSet
+ * @description reads the icon pack for the current user
+ */
 module.exports = class IconSet {
+    /**
+     * 
+     * @param {string} name 
+     */
     constructor(name){
         this.name = name;
 

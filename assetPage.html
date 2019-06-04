@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="scripts/elements.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assets</title>
+
+    <style>
+        li:nth-child(odd){
+            background: lightgray;
+        }
+
+        li:nth-child(even){
+            background: darkgray;
+        }
+    </style>
+    
+</head>
+<body>
+    <chrome><ch-min></ch-min><ch-max></ch-max><ch-exit></ch-exit></chrome>
+    <ul>
+        
+    </ul>
+    <script>
+        window.settings = require('electron').ipcRenderer.sendSync('get-user','');
+        require('./scripts/updater.js')('nightly');
+        // You can also require other files to run in this process
+        require('./scripts/renderer.js');
+
+        const clipboard = require('electron').remote.clipboard;
+
+        function openInWin(openurl){
+            var BrowserWindow = require('electron').remote.BrowserWindow;
+            var win = new BrowserWindow({
+                width: 800,
+                height: 600,
+                webPreferences: {
+                    nodeIntegration: true
+                },
+                icon: './images.png',
+                frame: false,
+                minWidth: '145',
+                minHeight: '100'
+            });
+
+            win.loadFile(__dirname+'/index.html');
+            win.webContents.executeJavaScript('getCurrentView().src = "' + openurl + '";');
+        }
+
+        var ul = document.querySelector('ul');
+
+        // function handleClip(i){
+            // clipboard.writeText(i);
+        // }
+
+        function addAssets(arr){
+            for(let i of arr){
+                // var copyBtn = '';
+                // var openBtn = openInWin(i);
+                ul.innerHTML += '<li>'+i+'</li>';
+            }
+        }
+    </script>
+</body>
+</html>

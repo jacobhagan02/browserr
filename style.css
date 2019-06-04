@@ -1,16 +1,16 @@
 @font-face{
     font-family: medium;
-    src: url("fonts/Roboto-Medium.ttf");
+    src: url("fonts/RobotoMono-Light.ttf");
 }
 
 @font-face{
     font-family: light;
-    src: url("fonts/Roboto-Light.ttf");
+    src: url("fonts/Roboto-Thin.ttf");
 }
 
 @font-face{
     font-family: regular;
-    src: url("fonts/Roboto-Regular.ttf")
+    src: url("fonts/Roboto-Light.ttf")
 }
 
 html,body{margin:0;overflow: hidden;font-family: regular;font-size:14px;color:#000000;}
@@ -30,7 +30,7 @@ page-tabs{
 }
 
 chrome{
-    height: 25px;
+    height: 30px;
     padding-right:2px;
 }
 
@@ -94,14 +94,14 @@ ch-min,ch-max,ch-exit{
     align-items: center;
     position: absolute;
     top:0;
-    height: inherit;
     width: 25px;
     height:25px;
     justify-content: center;
     background-color: inherit;
     padding:2px;
     border-width:0px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
+    zoom: 1.2;
 }
 
 pg-back,pg-forward,pg-refresh{
@@ -120,13 +120,29 @@ pg-back:hover,pg-forward:hover,pg-refresh:hover{
     background: darkgrey;
 }
 
-ch-min:hover,ch-max:hover,ch-exit:hover{
+ch-min:hover,ch-max:hover{
     background-color:darkgray;
+}
+
+ch-exit:hover{
+    background-color: #f04747;
 }
 
 ch-exit{right:0;}
 ch-max{right:25px;}
 ch-min{right:50px;}
+
+#WINMin > rect {
+    fill: hsl(0,0%,0%);
+}
+
+#WINMAX > rect {
+    stroke: hsl(0,0%,0%);
+}
+
+#WINX > polygon {
+    fill: hsl(0,0%,0%);
+}
 
 svg{display:inline-block;margin:0;}
 
@@ -151,35 +167,36 @@ other-settings{
     border-color:black;
 }
 
-settingsbtn{
+settings-btn{
     height:25px;
     width:25px;
-    display:block;
+    display:inline-block;
 
-    float:right;
+    /* float:right; */
     display:relative;
     top: -2px;
 
-    border-style:solid;
-    border-width:2px;
-    border-color:white;
-    border-bottom:none;
+    /* border-style:solid; */
+    /* border-width:2px; */
+    /* border-color:white; */
+    border-radius: 50%;
+    /* border-bottom:none; */
 }
 
-settingsbtn:hover{
-    display:inline-block;
+settings-btn:hover{
+    /* display:inline-block; */
     background: lightgrey;
-    border-color:black;
+    /* border-color:black; */
 }
 
-st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,m-settings,st-label{
+/*st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,m-settings,st-label,st-pkg{
     display:block;
     width:130px;
     padding:5px;
     border: 1px solid darkgray;
     border-radius:5px;
     -webkit-user-select: none;
-}
+}*/
 
 page-zoom{
     display: flex;
@@ -187,7 +204,7 @@ page-zoom{
     justify-content: space-evenly;
 }
 
-st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,m-settings:hover,page-zoom:hover,st-label:hover{
+/*st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,m-settings:hover,page-zoom:hover,st-label:hover,st-pkg:hover{
     border: 1px solid black;
     background: rgb(230,230,230);
     padding: 7.5px;
@@ -195,9 +212,9 @@ st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover
 
 st-br{
     border:none;
-}
+}*/
 
-settingsbtn:hover other-settings, other-settings:hover{
+settingsbtn:hover other-settings, other-settings > img{
     display:inline-block;
 }
 
@@ -419,6 +436,50 @@ m-settings input{
     width: 98%;
 }
 
+m-settings {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    width: 100px;
+    height: 0px;
+    background: white;
+    padding: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display:none;
+    border: 2px solid lightgrey;
+}
+
+m-settings > button {
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    padding: 1px;
+    zoom: 0.85;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    border-radius: 50%;
+}
+
+m-settings > button:hover {
+    background: lightgrey;
+}
+
+m-settings.display {
+    display:inline-block;
+    overflow: hidden;
+    animation-name: mset;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes mset{
+    from{ height: 0px;}
+    to{ height: 56px; }
+}
+
 .tabSelect{
     border-color:#ffffff;
     background:#ffffff;
@@ -445,4 +506,37 @@ multi-view{
     display:block;
     overflow:none;
     height:calc(100vh - 111.5px);
+}
+
+text-finder{
+    background:darkgrey;
+    display:none;
+    position: absolute;
+    top: 80px;
+    right:15px;
+    width:300px;
+    height: 35px;
+    z-index: 1;
+}
+
+text-finder > input{
+    /* border-width: 2px; */
+    width: 270px;
+    height:100%;
+    top: 0px;
+    position: absolute;
+}
+
+text-finder > button{
+    width:29px;
+    height:100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background:darkgray;
+    border:none;
+}
+
+text-finder > button > svg{
+    zoom: 0.75;
 }

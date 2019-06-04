@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
-const {ipcMain, app, BrowserWindow, Tray, Menu, MenuItem, Accelerator, Notification, shell, nativeImage} = require('electron')
+const {ipcMain, app, BrowserWindow, session, Tray, Menu, MenuItem, Accelerator, Notification, shell, nativeImage} = require('electron')
+// const JSON5 = require('json5');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -8,6 +9,7 @@ let tray = null;
 let branch = 'beta';
 let debugging = false;
 let offline = false;
+let redirs = require('./scripts/redirects.js')
 
 function createWindow () {
   // Create the browser window.
@@ -20,8 +22,8 @@ function createWindow () {
     icon: './svgs/images.png',
     frame: false,
     backgroundColor: '#ffffff',
-    minWidth: '145',
-    minHeight: '100'
+    minWidth: 200,
+    minHeight: 100
   });
 
   // and load the password.html of the app.
@@ -31,12 +33,9 @@ function createWindow () {
   // mainWindow.openDevTools();
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
+  mainWindow.on('closed',()=>{
     mainWindow = null;
-  })
+  });
 }
 
 // This method will be called when Electron has finished
@@ -101,3 +100,4 @@ ipcMain.on('set-user',(event,value)=>{
 ipcMain.on('get-user',(event,value)=>{
     event.returnValue = user;
 });
+

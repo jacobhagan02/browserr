@@ -1,5 +1,11 @@
 const https = require('https');
 const fs = require('fs');
+var notification;
+if(require('electron').remote){
+    notification = require('electron').remote.dialog;
+}else{
+    notification = require('electron').dialog;
+}
 
 function read(branch, filePath){
     var url = 'https://raw.githubusercontent.com/eatmyvenom/browserr/' + branch + '/' + filePath;
@@ -29,7 +35,9 @@ function gread(branch, filePath){
 function pkgUpdate(){
     var npm = require('npm');
     npm.load((err)=>{
-        npm.commands.install()
+        npm.commands.install();
+
+        notification.showMessageBox({title:'Browserr',message:"update finished downloading",buttons:[]});
     });
 }
 
@@ -43,6 +51,7 @@ function update (branch = 'master') {
     }
 
     gread(branch,'scripts/updates.json').then((d)=>{
+        // notification.showMessageBox({title:'Browserr',message:"update finished downloading",buttons:[]});
         if(d == '404: Not Found') return;
         d = JSON.parse(d);
         let i;
@@ -71,7 +80,11 @@ function update (branch = 'master') {
         
 
     }).catch((e)=>{
-        window.alert(e);
+        // if(window){
+            // window.alert(e);
+        // }else{
+            console.trace(e);
+        // }
         process.exit(0);
     });}
 

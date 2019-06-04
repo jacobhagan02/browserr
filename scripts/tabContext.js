@@ -54,7 +54,12 @@ let mnu = Menu.buildFromTemplate([
     {label:'Close Tab',accelerator : 'Ctrl+W',click:closeTab},
     {label:'Dev Tools',accelerator:'Ctrl+Shift+I',click:openDevTools},
     {label:'New Tab',accelerator:'Ctrl+T',click:newTab},
-    {label:'New Window',accelerator:'Ctrl+N',click:newWindow}
+    {label:'New Window',accelerator:'Ctrl+N',click:newWindow},
+    {label:'Find In Page',accelerator:'Ctrl+F',click:findTxt}
 ]);
 
 Menu.setApplicationMenu(mnu);
+
+function findTxt(){
+    document.querySelector('text-finder').style.display = 'inline-block';
+}

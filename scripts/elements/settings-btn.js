@@ -18,6 +18,10 @@ function zReset(){
     getCurrentView().setZoomFactor(1);
 }
 
+function openMultiView(){
+    document.querySelector('m-settings').classList.toggle("display");
+}
+
 module.exports = class extends HTMLElement {    
     constructor(){
         super();
@@ -45,7 +49,7 @@ module.exports = class extends HTMLElement {
             {type:"separator"},
             {label:"Settings",click:settingsWindow},
             {label:"Dev Tools",click:openTools},
-            {label: "Multi View"}
+            {label: "Multi View", click: openMultiView}
         ]);
 
         mnu.popup({y:e.target.offsetTop+25,x:e.target.offsetLeft})

@@ -217,6 +217,12 @@
             "scripts/elements/pg-tab.js":"",
             "scripts/elements/settings-btn.js":"",
             "scripts/elements/webview.js":""
+        }},
+        "42":{"files":{
+            "index.html":"",
+            "style.css":"",
+            "scripts/elements/m-settings.js":"",
+            "scripts/elements/settings-btn.js":""
         }}
     }
 }

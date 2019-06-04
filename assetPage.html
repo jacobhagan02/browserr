@@ -31,6 +31,7 @@
         const clipboard = require('electron').remote.clipboard;
 
         function openInWin(openurl){
+            var BrowserWindow = require('electron').remote.BrowserWindow;
             var win = new BrowserWindow({
                 width: 800,
                 height: 600,
@@ -48,11 +49,16 @@
         }
 
         var ul = document.querySelector('ul');
+
+        // function handleClip(i){
+            // clipboard.writeText(i);
+        // }
+
         function addAssets(arr){
             for(let i of arr){
-                var copyBtn = clipboard.writeText(i);
-                var openBtn = openInWin(i);
-                ul.innerHTML += '<li>'+i+copyBtn+openBtn+'</li>';
+                // var copyBtn = '';
+                // var openBtn = openInWin(i);
+                ul.innerHTML += '<li>'+i+'</li>';
             }
         }
     </script>

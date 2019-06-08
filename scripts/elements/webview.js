@@ -11,10 +11,14 @@ function packagePage(url,title){
 }
 
 function attachRedirect(d,c){
+    
+    console.log(d);
+
     if(d.resourceType == 'mainFrame'){
         window.settings.h[window.settings.h.length - 1].pageLog = pageLog;
-        console.log(window.settings.h)
+        // console.log(window.settings.h)
         pageLog = [d.url];
+        console.log(d)
     }else{
         pageLog.push(d.url);
     }
@@ -24,6 +28,7 @@ function attachRedirect(d,c){
 
 function handleReady(){
     // console.log(this.getWebContents())
+    // console.log(this.getWebContents().session.webRequest)
     this.getWebContents().session.webRequest.onBeforeRequest(attachRedirect);
 }
 

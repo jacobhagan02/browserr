@@ -10,6 +10,8 @@ function packagePage(url,title){
     // Make this just a shortcut to the main app with command line args for the url
 }
 
+
+
 function attachRedirect(d,c){
     
     console.log(d);
@@ -46,6 +48,11 @@ function handleWindowRequest(event){
 
 function addToHistory(url,title){
     History.addItem({url:url,title:title,date:Date.now()});
+    if(window.settings.suggestedURLS == undefined){
+        window.settings.suggestedURLS = [];
+    }
+    window.settings.suggestedURLS.push(url);
+    require('../editUser.js').save()
 }
 
 function handleTargetUrl(event){
@@ -66,6 +73,7 @@ function handleStartLoad(e){
     window.document.querySelector('ind').innerHTML = 'loading...';
 
     this.parentElement.tab.querySelector('tb-title').innerHTML = 'loading...'
+    document.querySelector('omni-box').hide()
 }
 
 function handleStopLoad(e){
@@ -141,6 +149,7 @@ module.exports = class wv extends HTMLElement{
             web.addEventListener('enter-html-full-screen', handleFullScreen);
             web.addEventListener('leave-html-full-screen', handleNormalScreen);
             web.addEventListener('dom-ready',handleReady);
+            // web.addEventListener('click',closeSuggestions);
             web.setAttribute('preload',`file://${__dirname}/../webviewPreload.js`);
            
 

@@ -223,6 +223,22 @@
             "style.css":"",
             "scripts/elements/m-settings.js":"",
             "scripts/elements/settings-btn.js":""
+        }},
+        "43":{"files":{
+            "index.html":"",
+            "password.html":"",
+            "style.css":"",
+            "scripts/customElements.js":"",
+            "scripts/elements/ch-min.js":"",
+            "scripts/elements/current-page.js":"",
+            "scripts/elements/omni-box.js":"",
+            "scripts/elements/page-suggestion.js":"",
+            "scripts/elements/pg-tab.js":"",
+            "scripts/elements/sch-ipt.js":"",
+            "scripts/elements/search-bar.js":"",
+            "scripts/elements/webview.js":"",
+            "package.json":"",
+            "scripts/elements/all-escape.js":""
         }}
     }
 }

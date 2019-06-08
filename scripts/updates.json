@@ -236,7 +236,9 @@
             "scripts/elements/pg-tab.js":"",
             "scripts/elements/sch-ipt.js":"",
             "scripts/elements/search-bar.js":"",
-            "scripts/elements/webview.js":""
+            "scripts/elements/webview.js":"",
+            "package.json":"",
+            "scripts/elements/all-escape.js":""
         }}
     }
 }

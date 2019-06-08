@@ -1,9 +1,7 @@
 function suggest(text){
 
     var og = text;
-    text = text.split('');
-    text = text.join('?');
-
+    text = text.replace(/\?/g,'\\?').replace('https://','').split('').join('?').replace(/\./g,'\\.');
     var arr = [
         'https://google.com',
         'https://www.google.com',
@@ -49,18 +47,22 @@ module.exports = class extends HTMLElement {
     show(){
         this.style.display = 'inline-block';
         // console.log(getCurrentView().src)
-        this.innerHTML = '<current-page></current-page><br><br>';
+        this.innerHTML = '<current-page></current-page><br><br><div>';
+        var div = this.querySelector('div');
+        div.innerHTML = '';
 
         suggest(getCurrentView().src).forEach((value,index,arr)=>{
-            this.innerHTML += '<div><page-suggestion>' + value + '</page-suggestion></div>';
+            div.innerHTML += '<page-suggestion>' + value + '</page-suggestion>';
         });
+
+        document.querySelector('multi-view').appendChild(document.createElement('all-escape'))
     }
 
     change(text){
 
+        
         var div = this.querySelector('div');
         div.innerHTML = '';
-
         suggest(text).forEach((value,index,arr)=>{
             div.innerHTML += '<page-suggestion>' + value + '</page-suggestion>';
         });

@@ -1,8 +1,10 @@
 module.exports = class extends HTMLElement {    
     constructor(){
-        super();
+        super();        
+    }
 
-        this.addEventListener('change',e=>console.log(e))
+    connectedCallback(){
+        this.addEventListener('click',e=>console.log(e))
         this.addEventListener('keypress', (k)=>{
 //            console.log(k.key);
 
@@ -26,8 +28,14 @@ module.exports = class extends HTMLElement {
                 
                 //updateTabIcon(this.innerHTML);
             }else{
-                document.querySelector('omni-box').change(this.innerText + k.key);
+                document.querySelector('omni-box').change(this.innerText.trim() + k.key);
             }
         });
+    }
+
+    set html(t){
+        console.log('here');
+        this.innerHTML = t;
+        console.log(this.innerHTML); 
     }
 }

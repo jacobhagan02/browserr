@@ -321,3 +321,4 @@ def('settings-btn');
 def('omni-box');
 def('current-page');
 def('page-suggestion');
+def('all-escape');

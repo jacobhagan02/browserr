@@ -10,6 +10,8 @@ function packagePage(url,title){
     // Make this just a shortcut to the main app with command line args for the url
 }
 
+
+
 function attachRedirect(d,c){
     if(d.resourceType == 'mainFrame'){
         window.settings.h[window.settings.h.length - 1].pageLog = pageLog;
@@ -142,6 +144,7 @@ module.exports = class wv extends HTMLElement{
             web.addEventListener('enter-html-full-screen', handleFullScreen);
             web.addEventListener('leave-html-full-screen', handleNormalScreen);
             web.addEventListener('dom-ready',handleReady);
+            // web.addEventListener('click',closeSuggestions);
             web.setAttribute('preload',`file://${__dirname}/../webviewPreload.js`);
            
 

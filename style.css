@@ -555,7 +555,7 @@ omni-box{
 
 omni-box > current-page > button{
     background:lightgray;
-    padding:3px 5px 3px 5px;
+    padding:3px 7px 3px 7px;
     border:none;
     border-radius:10px;
 }
@@ -565,6 +565,26 @@ page-suggestion{
     padding: 5px;
 }
 
+page-suggestion, current-page span {
+    max-width: 50vw;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: none;
+}
+
+page-suggestion{
+    max-width:100%;
+}
+
 page-suggestion:hover{
     background: lightgray;
+}
+
+all-escape{
+    top: 100px;
+    height: 90vh;
+    width:100vw;
+    background:transparent;
+    position: absolute;
+    z-index: 98;
 }

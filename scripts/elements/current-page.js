@@ -4,9 +4,8 @@ module.exports = class extends HTMLElement{
     }
 
     connectedCallback(){
-        var box = document.querySelector('omni-box');
         var url = getCurrentView().src;
-        document.querySelector('sch-ipt').innerHTML = ''
+
 
         this.innerHTML = '<span>' + url + '</span>' + '<button id="copy"></button> <button id="edit"></button>';
 
@@ -15,11 +14,14 @@ module.exports = class extends HTMLElement{
             require('electron').remote.clipboard.writeText(url);
         });
 
-        this.querySelector('#edit').innerHTML = 'Edit';
+        this.querySelector('#edit').innerHTML = 'Remove';
         this.querySelector('#edit').addEventListener('click',()=>{
-            box.hide();
-            document.querySelector('sch-ipt').innerHTML = url;
-            document.querySelector('search-bar').focus();
+            // box.hide();
+            // console.log('here')
+            
+            // console.log(document.querySelector('search-bar'))
+            document.querySelector('search-bar').focuss();
+            document.querySelector('sch-ipt').html = '';
         });
     }
 }

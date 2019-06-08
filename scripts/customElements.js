@@ -318,3 +318,6 @@ def('m-settings');
 def('text-finder');
 def('st-pkg');
 def('settings-btn');
+def('omni-box');
+def('current-page');
+def('page-suggestion');

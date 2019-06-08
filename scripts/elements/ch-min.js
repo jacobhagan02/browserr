@@ -4,7 +4,7 @@
 const thisWindow = require('electron').remote.getCurrentWindow();
 
 function minimize(){
-    console.log(require('electron').remote.BrowserWindow.getFocusedWindow().minimize)
+    // console.log(require('electron').remote.BrowserWindow.getFocusedWindow().minimize)
     require('electron').remote.BrowserWindow.getFocusedWindow().minimize();
 }
 

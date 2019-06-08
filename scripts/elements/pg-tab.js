@@ -84,7 +84,7 @@ module.exports = class extends HTMLElement {
             assWin.openDevTools();
 
             var arg = "['" + ele.view.assets().join("','").toString() + "']";
-            console.log(arg);   
+            // console.log(arg);   
 
             assWin.webContents.executeJavaScript('addAssets(' + arg + ')',function(){console.log(arguments)});
         }

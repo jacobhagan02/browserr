@@ -13,7 +13,7 @@ function packagePage(url,title){
 function attachRedirect(d,c){
     if(d.resourceType == 'mainFrame'){
         window.settings.h[window.settings.h.length - 1].pageLog = pageLog;
-        console.log(window.settings.h)
+        // console.log(window.settings.h)
         pageLog = [d.url];
     }else{
         pageLog.push(d.url);
@@ -41,6 +41,11 @@ function handleWindowRequest(event){
 
 function addToHistory(url,title){
     History.addItem({url:url,title:title,date:Date.now()});
+    if(window.settings.suggestedURLS == undefined){
+        window.settings.suggestedURLS = [];
+    }
+    window.settings.suggestedURLS.push(url);
+    require('../editUser.js').save()
 }
 
 function handleTargetUrl(event){
@@ -61,6 +66,7 @@ function handleStartLoad(e){
     window.document.querySelector('ind').innerHTML = 'loading...';
 
     this.parentElement.tab.querySelector('tb-title').innerHTML = 'loading...'
+    document.querySelector('omni-box').hide()
 }
 
 function handleStopLoad(e){

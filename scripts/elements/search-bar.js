@@ -11,5 +11,12 @@ module.exports = class extends HTMLElement {
 
     connectedCallback(){
         this.addEventListener('click', focusSearchInput)
+        this.addEventListener('click',()=>{
+            document.querySelector('omni-box').show();
+        });
+    }
+
+    focus(){
+        focusSearchInput()
     }
 }

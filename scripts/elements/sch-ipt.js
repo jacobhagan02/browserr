@@ -2,6 +2,7 @@ module.exports = class extends HTMLElement {
     constructor(){
         super();
 
+        this.addEventListener('change',e=>console.log(e))
         this.addEventListener('keypress', (k)=>{
 //            console.log(k.key);
 
@@ -24,6 +25,8 @@ module.exports = class extends HTMLElement {
 
                 
                 //updateTabIcon(this.innerHTML);
+            }else{
+                document.querySelector('omni-box').change(this.innerText + k.key);
             }
         });
     }

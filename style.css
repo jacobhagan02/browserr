@@ -540,3 +540,24 @@ text-finder > button{
 text-finder > button > svg{
     zoom: 0.75;
 }
+
+omni-box{
+    position: absolute;
+    display: none;
+    top: 75px;
+    left: 90px;
+    background: white;
+    z-index: 99;
+    width: 93%;
+    border: lightgray solid;
+    padding: 5px;
+}
+
+page-suggestion{
+    display:block;
+    padding: 5px;
+}
+
+page-suggestion:hover{
+    background: lightgray;
+}

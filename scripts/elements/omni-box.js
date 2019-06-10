@@ -15,7 +15,20 @@ function suggest(text){
     var high = [];
     var regex = new RegExp(text,'g');
 
-    arr = [...window.settings.suggestedURLS, ...arr ]
+    var suggests = []
+    for(let i = 0; i < window.settings.suggestedURLS.length; i++){
+        if(!window.settings.suggestedURLS[i].url){
+            var url = window.settings.suggestedURLS[i];
+            window.settings.suggestedURLS[i] = {};
+            window.settings.suggestedURLS[i].url = url;
+            require('get-website-favicon')(url).then(d=>{
+                window.settings.suggestedURLS[i].icon = d.icons[0].src;
+            });
+        }
+        suggests.push(window.settings.suggestedURLS[i].url);
+    }
+
+    arr = [...suggests, ...arr ]
 
     for(let i of arr){
         var ar = i.match(regex);

@@ -246,6 +246,16 @@
             "scripts/mozExt/clipboard.js":"",
             "scripts/mozExt/package.json":"",
             "scripts/v8Ext/clipboard.js":""
+        }},
+        "45":{"files":{
+            "main.js":"",
+            "style.css":"",
+            "pages/home.html":"",
+            "scripts/redirects.js":"",
+            "scripts/elements/grid-view.js":"",
+            "scripts/elements/min-page/js":"",
+            "scripts/elements/omni-box.js":"",
+            "scripts/elements/webview.js":""
         }}
     }
 }

@@ -26,7 +26,8 @@ module.exports = (URL,callback) =>{
             vueR : "node_modules/vue-router/dist/vue-router.js",
             babel : "node_modules/@babel/standalone/babel.min.js",
             react : "node_modules/react/umd/react.production.min.js",
-            reactdom: "/home/jacobhagan2002/electron/browserr/node_modules/react-dom/umd/react-dom.production.min.js"
+            reactdom: "node_modules/react-dom/umd/react-dom.production.min.js",
+            homePage: "pages/home.html"
         }
 
         const tests = { 
@@ -47,7 +48,8 @@ module.exports = (URL,callback) =>{
             vueR : /vue(\.min)?\.js/,
             babel : /babel(\.min)?\.js/,
             react : /react\.production(\.min)?\.js/,
-            reactdom : /react-dom(\.production)?(\.min)?\.js/
+            reactdom : /react-dom(\.production)?(\.min)?\.js/,
+            homePage : /about\:blank/
         }
 
 

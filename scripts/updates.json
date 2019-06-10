@@ -239,6 +239,13 @@
             "scripts/elements/webview.js":"",
             "package.json":"",
             "scripts/elements/all-escape.js":""
+        }},
+        "44":{"files":{
+            "main.js":"",
+            "scripts/mozExt/browser.js":"",
+            "scripts/mozExt/clipboard.js":"",
+            "scripts/mozExt/package.json":"",
+            "scripts/v8Ext/clipboard.js":""
         }}
     }
 }

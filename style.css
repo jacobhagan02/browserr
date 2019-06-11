@@ -588,3 +588,9 @@ all-escape{
     position: absolute;
     z-index: 98;
 }
+
+grid-view{
+    display:grid;
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+}

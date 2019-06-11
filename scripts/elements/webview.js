@@ -14,7 +14,7 @@ function packagePage(url,title){
 
 function attachRedirect(d,c){
     
-    console.log(d);
+    // console.log(d);
 
     if(d.resourceType == 'mainFrame'){
         window.settings.h[window.settings.h.length - 1].pageLog = pageLog;
@@ -48,11 +48,7 @@ function handleWindowRequest(event){
 
 function addToHistory(url,title){
     History.addItem({url:url,title:title,date:Date.now()});
-    if(window.settings.suggestedURLS == undefined){
-        window.settings.suggestedURLS = [];
-    }
-    window.settings.suggestedURLS.push(url);
-    require('../editUser.js').save()
+    
 }
 
 function handleTargetUrl(event){
@@ -88,6 +84,14 @@ function handleURLUpdate(event){
     // console.log(this.src)
     addToHistory(event.url,event.srcElement.getTitle());
 
+    if(window.settings.suggestedURLS == undefined){
+        window.settings.suggestedURLS = [];
+    }
+    var obj = {}
+    obj.url = event.url;
+    obj.icon = event.target.parentElement.favicon;
+    window.settings.suggestedURLS.push(obj);
+    require('../editUser.js').save()
     // console.log(event);
 }
 
@@ -217,6 +221,7 @@ module.exports = class wv extends HTMLElement{
     otherFavicon(favs){
         var tab = this.parentElement.tab;
 
+        this.favicon = favs.favicons[0];
         tab.querySelector('tb-icon').querySelector('img').src = favs.favicons[0];
     }
 

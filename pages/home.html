@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script src="scripts/elements.js"></script>
+</head>
+<body>
+    <omni-box></omni-box>
+    <grid-view rows='2' cols='3' >
+        <min-page></min-page>
+        <min-page></min-page>
+        <min-page></min-page>
+
+        <min-page></min-page>
+        <min-page></min-page>
+        <min-page></min-page>
+    </grid-view>
+
+    <script>
+
+        window.settings = require('electron').ipcRenderer.sendSync('get-user','');
+        // require('./scripts/updater.js')('nightly');
+        // You can also require other files to run in this process
+         require('./scripts/renderer.js')
+        
+        function topPages(n){
+            window.settings.b;
+            
+
+        }
+
+        document.querySelectorAll('min-page').forEach((E,n)=>{
+            E.pageData = topPages(n);
+        });
+    </script>
+</body>
+</html>

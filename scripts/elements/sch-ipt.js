@@ -15,14 +15,14 @@ module.exports = class extends HTMLElement {
                     getCurrentView().src=this.innerText;
                     getCurrentView().focus();
                     ele.innerHTML = this.innerText;
-                    if(document.querySelector('omni-box')){document.querySelector('omni-box').remove()}
+                    if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
                 } else {
                     urlify(this.innerText,(url)=>{
                         //console.log(url);
                         getCurrentView().src=url;
                         getCurrentView().focus();
                         ele.innerHTML = url;
-                        if(document.querySelector('omni-box')){document.querySelector('omni-box').remove()}
+                        if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
                     });
                 }
                 

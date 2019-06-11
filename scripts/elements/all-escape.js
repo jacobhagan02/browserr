@@ -10,6 +10,6 @@ module.exports = class extends HTMLElement{
     }
 
     remove(){
-        document.querySelectorAll('omni-box').forEach(e=>e.parentElement.removeChild(e));
+        document.querySelectorAll('all-escape').forEach(e=>e.parentElement.removeChild(e));
     }    
 }

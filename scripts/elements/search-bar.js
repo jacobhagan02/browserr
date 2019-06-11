@@ -17,7 +17,7 @@ module.exports = class extends HTMLElement {
     }
 
     focuss(){
-        console.log('heres')
+        // console.log('heres')
         focusSearchInput()
     }
 }

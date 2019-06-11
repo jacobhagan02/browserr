@@ -5,7 +5,7 @@ module.exports = class extends HTMLElement{
         this.addEventListener('click',()=>{
             document.querySelector('omni-box').hide();
             getCurrentView().src = url; 
-            if(document.querySelector('omni-box')){document.querySelector('omni-box').remove()}
+            if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
         });
     }
 }

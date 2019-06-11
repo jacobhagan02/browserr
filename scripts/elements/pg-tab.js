@@ -177,7 +177,7 @@ module.exports = class extends HTMLElement {
                     handleTooSmall();
                 }
             }
-            if(document.querySelector('omni-box')){document.querySelector('omni-box').remove()}
+            if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
             document.querySelector('multi-view').refresh();
         }
     }
@@ -195,7 +195,7 @@ module.exports = class extends HTMLElement {
                     handleTooSmall();
                 }
             }
-            if(document.querySelector('omni-box')){document.querySelector('omni-box').remove()}
+            if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
             document.querySelector('multi-view').refresh();
         }
 

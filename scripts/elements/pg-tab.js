@@ -38,10 +38,12 @@ module.exports = class extends HTMLElement {
     }
 
     connectedCallback(){
-        this.innerHTML = "<tb-icon src='images.png'></tb-icon><tb-title>New Tab</tb-title><tb-remove><tb-remove>";
+        this.innerHTML = "<tb-icon src='images.png'></tb-icon><tb-title>New Tab</tb-title><tb-remove></tb-remove><tab-info></tab-info>";
         this.addEventListener("click",this.show);
         this.addEventListener("click",this.searchBarUpdate2);
-        this.addEventListener('contextmenu',this.contextMenu)
+        this.addEventListener('contextmenu',this.contextMenu);
+        this.addEventListener('mouseover', this.hover);
+        this.addEventListener('mouseleave', this.leave);
 
         this.view = document.querySelector('web--view[num="'+this.num+'"]');
 
@@ -52,6 +54,14 @@ module.exports = class extends HTMLElement {
         if(tabs.offsetTop > 27){
             handleTooBig();
         }
+    }
+
+    hover(){
+        this.querySelector('tab-info').show();
+    }
+
+    leave(){
+
     }
 
     contextMenu(){

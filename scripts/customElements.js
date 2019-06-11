@@ -322,3 +322,4 @@ def('omni-box');
 def('current-page');
 def('page-suggestion');
 def('all-escape');
+def('tab-info');

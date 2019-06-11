@@ -594,3 +594,22 @@ grid-view{
     grid-column-gap: 50px;
     grid-row-gap: 50px;
 }
+
+tab-info{
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    top: 35px;
+    /* padding:5px; */
+    width:200px;
+    background: white;
+    border-radius: 10px;
+    z-index: 4;
+}
+
+pg-tab:hover > tab-info{
+    height: 45px;
+    padding:5px;
+}

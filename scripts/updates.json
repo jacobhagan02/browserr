@@ -256,6 +256,13 @@
             "scripts/elements/min-page/js":"",
             "scripts/elements/omni-box.js":"",
             "scripts/elements/webview.js":""
+        }},
+        "46":{"files":{
+            "style.css":"",
+            "scripts/customElements.js":"",
+            "scripts/elements/multi-view.js":"",
+            "scripts/elements/pg-tab.js":"",
+            "scripts/elements/tab-info.js":""
         }}
     }
 }

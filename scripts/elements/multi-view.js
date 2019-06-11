@@ -66,6 +66,11 @@ module.exports = class extends HTMLElement{
         }
     }
 
+    refresh(){
+        this.toggleEnabled();
+        this.toggleEnabled();
+    }
+
     enable(){
         this.setAttribute('enabled','');
         this.setAttribute('class','enabled');

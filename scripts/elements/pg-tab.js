@@ -172,12 +172,12 @@ module.exports = class extends HTMLElement {
             if(tabs.children.length == 0){
                 require('electron').remote.getCurrentWindow().close();
             } else{
-                tabs.children[tabs.children.length - 1].show();
+                tabs.children[0].show();
                 if(tabs.offsetTop < 17){
                     handleTooSmall();
                 }
             }
-    
+            if(document.querySelector('omni-box')){document.querySelector('omni-box').remove()}
             document.querySelector('multi-view').refresh();
         }
     }
@@ -190,11 +190,13 @@ module.exports = class extends HTMLElement {
             if(tabs.children.length == 0){
                 require('electron').remote.getCurrentWindow().close();
             } else{
-                tabs.children[tabs.children.length - 1].show();
+                tabs.children[0].show();
                 if(tabs.offsetTop < 23){
                     handleTooSmall();
                 }
             }
+            if(document.querySelector('omni-box')){document.querySelector('omni-box').remove()}
+            document.querySelector('multi-view').refresh();
         }
 
     }

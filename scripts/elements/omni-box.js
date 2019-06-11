@@ -55,28 +55,56 @@ module.exports = class extends HTMLElement {
 
     connectedCallback(){
         // this.show()
+        this.extras = [];
+        this.inputStarts = [];
+        this.inputChange = [];
+        this.inputEnter = [];
+        this.inputCancel = [];
+        this.deletes = [];
     }
 
     show(){
+
+        for(let i of this.inputStarts){
+            i();
+        }
+
         this.style.display = 'inline-block';
         // console.log(getCurrentView().src)
         this.innerHTML = '<current-page></current-page><br><br><div>';
         var div = this.querySelector('div');
         div.innerHTML = '';
 
-        suggest(getCurrentView().src).forEach((value,index,arr)=>{
+        [...this.extras , ...suggest(getCurrentView().src)].forEach((value,index,arr)=>{
             div.innerHTML += '<page-suggestion>' + value + '</page-suggestion>';
         });
 
         document.querySelector('multi-view').appendChild(document.createElement('all-escape'))
     }
 
+    addSuggest(suggestion){
+        this.extras.unshift(suggestion);
+    }
+
+    addSuggests(arr){
+        var nar = [];
+
+        for(let i = 0; i < arr.length; i++){
+            nar[i] = arr[i].description;
+        }
+
+        this.extras = [...arr, ...this.extras];
+    }
+
     change(text){
 
-        
+        for(let i of this.inputChange){
+            i(text, this.addSuggests);
+        }
+
         var div = this.querySelector('div');
         div.innerHTML = '';
-        suggest(text).forEach((value,index,arr)=>{
+        [...this.extras , ...suggest(text)].forEach((value,index,arr)=>{
             div.innerHTML += '<page-suggestion>' + value + '</page-suggestion>';
         });
     }

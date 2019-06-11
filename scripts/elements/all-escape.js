@@ -1,6 +1,11 @@
 function closeSuggestions(){
     this.remove();
     document.querySelector('omni-box').hide();
+
+    for(let i of document.querySelector('omni-box').inputCancel){
+        i();
+    }
+   
 }
 
 module.exports = class extends HTMLElement{

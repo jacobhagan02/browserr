@@ -9,6 +9,11 @@ module.exports = class alarms{
     }
 
     static async clearAll(){
+        this.getAll().forEach((v)=>{
+            clearTimeout(v.timeout)
+        });
+
+        alarms = {};
         return true;
     }
 
@@ -54,6 +59,8 @@ module.exports = class alarms{
 
             arr.push(this.get())
         }
+
+        return arr;
     }
 
     static get onAlarm(){

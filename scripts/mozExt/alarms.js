@@ -25,13 +25,9 @@ module.exports = class alarms{
             timeout = alarmInfo.when - Date.now();
         }else if(alarmInfo.delayInMinutes){
             timeout = alarmInfo.delayInMinutes * 60 * 1000;
+        }else if(alarmInfo.periodInMinutes){
+            timeout = periodInMinutes * 60 * 1000;
         }
-
-        function fn(){
-
-        }
-
-        var time = setTimeout(fn,timeout)
 
         var alarmObj = {
             name : name,
@@ -40,9 +36,23 @@ module.exports = class alarms{
             timeout : time
         }
 
+        function fn(){
+            for(let i of listeners){
+                i(alarmObj);
+            }
+
+            if(alarmObj.periodInMinutes){
+                alarmObj.timeout = setInterval(()=>{
+                    for(let i of listeners){
+                        i(alarmObj);
+                    }
+                }, periodInMinutes * 60 * 1000);
+            }
+        }
+        var time = setTimeout(fn,timeout)
+        alarmObj.timeout = time;
         alarms[name] = alarmObj;
 
-        
     }
 
     static async get(name = ""){

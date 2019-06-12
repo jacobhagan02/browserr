@@ -266,6 +266,9 @@
             "scripts/elements/multi-view.js":"",
             "scripts/elements/pg-tab.js":"",
             "scripts/elements/tab-info.js":""
+        }},
+        "47":{"files":{
+            "scripts/v8Ext/storage.js":""
         }}
     }
 }

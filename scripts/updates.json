@@ -242,6 +242,8 @@
         }},
         "44":{"files":{
             "main.js":"",
+            "scripts/mozExt":"mkdir",
+            "scripts/v8Ext":"mkdir",
             "scripts/mozExt/browser.js":"",
             "scripts/mozExt/clipboard.js":"",
             "scripts/mozExt/package.json":"",
@@ -250,10 +252,11 @@
         "45":{"files":{
             "main.js":"",
             "style.css":"",
+            "pages":"mkdir",
             "pages/home.html":"",
             "scripts/redirects.js":"",
             "scripts/elements/grid-view.js":"",
-            "scripts/elements/min-page/js":"",
+            "scripts/elements/min-page.js":"",
             "scripts/elements/omni-box.js":"",
             "scripts/elements/webview.js":""
         }},

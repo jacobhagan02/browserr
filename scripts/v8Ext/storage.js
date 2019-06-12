@@ -66,5 +66,10 @@ function makeChange(oldVal, newVal){
 
 
 module.exports = class Storage{
+    static get sync(){
+        if(window.settings.extStorageSync === undefined)
+            window.settings.extStorageSync = {}
 
+        return new StorageArea(extStorageSync);
+    }
 }

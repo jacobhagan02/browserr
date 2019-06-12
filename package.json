@@ -4,7 +4,8 @@
   "description": "An electron based web browser",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "addChanges" : "node addChanges.js"
   },
   "repository": {
     "type": "git",

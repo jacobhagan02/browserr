@@ -386,6 +386,12 @@
                 "scripts/v8Ext/tabs.js": "",
                 "style.css": ""
             }
+        },
+        "50": {
+            "files": {
+                "package.json": "",
+                "scripts/v8Ext/storage.js": ""
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ function attachRedirect(d,c){
         window.settings.h[window.settings.h.length - 1].pageLog = pageLog;
         // console.log(window.settings.h)
         pageLog = [d.url];
-        console.log(d)
+        // console.log(d)
     }else{
         pageLog.push(d.url);
     }
@@ -47,7 +47,7 @@ function handleWindowRequest(event){
 }
 
 function addToHistory(url,title){
-    History.addItem({url:url,title:title,date:Date.now()});
+    History.addItem({url:url,title:title.replace(/</g,'&#60;').replace(/>/g,'&#62;'),date:Date.now()});
     
 }
 
@@ -75,7 +75,7 @@ function handleStartLoad(e){
 function handleStopLoad(e){
     window.document.querySelector('ind').display = 'none';
 
-    this.parentElement.tab.querySelector('tb-title').innerHTML = this.getTitle();
+    this.parentElement.tab.querySelector('tb-title').innerHTML = this.getTitle().replace(/</g,'&#60;').replace(/>/g,'&#62;');
 }
 
 function handleURLUpdate(event){
@@ -215,7 +215,7 @@ module.exports = class wv extends HTMLElement{
         var tab = this.parentElement.tab;
 
         // console.log('tab = ' + title)
-        tab.querySelector('tb-title').innerHTML = title.title;
+        tab.querySelector('tb-title').innerHTML = title.title.replace(/</g,'&#60;').replace(/>/g,'&#62;');
     }
 
     otherFavicon(favs){

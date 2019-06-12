@@ -4,7 +4,7 @@ module.exports = class extends HTMLElement {
     }
 
     connectedCallback(){
-        this.addEventListener('click',e=>console.log(e))
+        // this.addEventListener('click',e=>console.log(e))
         this.addEventListener('keypress', (k)=>{
 //            console.log(k.key);
 

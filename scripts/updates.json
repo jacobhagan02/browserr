@@ -1,274 +1,391 @@
 {
-    "version" : "1.1.2",
-    "files" :
-    {
-        "scripts/updater.js":""
+    "version": "1.1.2",
+    "files": {
+        "scripts/updater.js": ""
     },
-
-    "patches":
-    {
-        "1":{"files":{}},
-        "2":{"files":{
-            "scripts/lock.js":""
-        }},
-        "3":{"files":{
-            "style.css":""
-        }},
-        "4":{"files":{
-            "style.css":""
-        }},
-        "5":{"files":{
-            "style.css":"",
-            "scripts/elements/pg-tab.js":"",
-            "scripts/elements.js":""
-        }},
-        "6":{"files":{
-            "style.css":"",
-            "index.html":"",
-            "password.html":"",
-            "scripts/elements/pg-tab.js":"",
-            "scripts/elements/b-ico.js":"",
-            "scripts/elements/book-marks.js":"",
-            "scripts/elements.js":""
-        }},
-        "7":{"files":{
-            "scripts/updater.js":"",
-            "main.js":""
-        }},
-        "8":{"files":{
-            "password.html":""
-        }},
-        "9":{"files":{
-            "password.html":"",
-            "scripts/elements/multi-view.js":"",
-            "style.css":""
-        }},
-        "10":{"files":{
-            "scripts/updater.js":""
-        }},
-        "11":{"files":{
-            "scripts/updater.js":"",
-            "index.js":"",
-            "main.js":""
-        }},
-        "12":{"files":{
-            "users":"mkdir",
-            "urlToFile.js":"",
-            "main.js":"",
-            "password.html":"",
-            "users/default.user":"",
-            "index.html":"",
-            "scripts/editUser.js":"",
-            "scripts/customElements.js":"",
-            "scripts/elements/add-mark.js":"",
-            "scripts/elements/add-tab.js":"",
-            "scripts/elements/ch-exit":"",
-            "scripts/elements/ch-max.js":"",
-            "scripts/elements/ch-min.js":"",
-            "scripts/elements/pg-back.js":"",
-            "scripts/elements/pg-forward.js":"",
-            "scripts/elements/pg-refresh.js":"",
-            "scripts/elements/settings-ico.js":"",
-            "scripts/elements/z-in.js":"",
-            "scripts/elements/z-out.js":"",
-            "scripts/handlers.js":"",
-            "scripts/bookmarks.js":"",
-            "scripts/history.js":"",
-            "historypage.html":"",
-            "bookmarkspage.html":"",
-            "scripts/settingsparser.js":"",
-            "settings.html":"",
-            "scripts/updater.js":""
-        }},
-        "13":{"files":{
-            "password.html":""
-        }},
-        "14":{"files":{
-            "password.html":"",
-            "scripts/elements/m-settings.js":"",
-            "scripts/elements/multi-view.js":"",
-            "style.css":""
-        }},
-        "15":{"files":{
-            "password.html":""
-        }},
-        "16":{"files":{
-            "scripts/elements/webview.js":""
-        }},
-        "17":{"files":{
-            "scripts/updater.js":""
-        }},
-        "18":{"files":{
-            "scripts/updater.js":""
-        }},
-        "19":{"files":{
-            "scripts/elements/webview.js":""
-        }},
-        "20":{"files":{
-            "password.html":"" 
-        }},
-        "21":{"files":{
-            "settings.html":"",
-            "scripts/settingsparser.js":"",
-            "scripts/elements/webview.js":"",
-            "index.html":""
-        }},
-        "22":{"files":{
-            "scripts/settingsparser.js":"",
-            "settings.html":"",
-            "scripts/customElements.js":""  
-        }},
-        "23":{"files":{
-            "scripts/customElements.js":""
-        }},
-        "24":{"files":{
-            "index.html":"",
-            "main.js":"",
-            "password.html":"",
-            "style.css":"",
-            "scripts/customElements.js":"",
-            "scripts/tabContext.js":"",
-            "scripts/webviewPreload.js":"",
-            "scripts/webviewele.js":"",
-            "scripts/elements/text-finder.js":""
-        }},
-        "25":{"files":{
-            "scripts/customElements.js":""  
-        }},
-        "26":{"files":{
-            "cache":"mkdir",
-            "package.json":"",
-            "package-lock.json":"",
-            "main.js":"",
-            "scripts/redirects.js":""
-        }},
-        "27":{"files":{
-            "package-lock.json":"",
-            "package.json":"",
-            "scripts/redirects.js":"",
-            "main.js":""
-        }},
-        "28":{"files":{
-            "main.js":"",
-            "package-lock.json":"",
-            "package.json":"",
-            "cache/require.min.js":"",
-            "scripts/redirects.js":""
-        }},
-        "29":{"files":{
-            "package-lock.json":"",
-            "package.json":""
-        }},
-        "30":{"files":{
-            "package-lock.json":"",
-            "package.json":"",
-            "scripts/redirects.js":"",
-            "index.html":"",
-            "password.html":"",
-            "style.css":"",
-            "scripts/icons.js":"",
-            "scripts/elements/ch-exit.js":"",
-            "scripts/elements/ch-max.js":"",
-            "scripts/elements/ch-min.js":""
-        }},
-        "31":{"files":{
-            "package-lock.json":"",
-            "package.json":"",
-            "scripts/redirects.js":"",
-            "style.css":""
-        }},
-        "32":{"files":{
-            "main.js":"",
-            "scripts/elements/st-pkg.js":""
-        }},
-        "33":{"files":{
-            "scripts/elements/st-pkg.js":""
-        }},
-        "34":{"files":{
-            "scripts/elements/ch-exit.js":"",
-            "scripts/updater.js":""
-        }},
-        "35":{"files":{
-            "scripts/updater.js":""
-        }},
-        "36":{"files":{
-            "scripts/updater.js":""
-        }},
-        "37":{"files":{
-            "scripts/updater.js":""
-        }},
-        "38":{"files":{}},
-        "39":{"files":{
-            "scripts/updater.js":""
-        }},
-        "40":{"files":{
-            "index.html":"",
-            "settings.html":"",
-            "style.css":"",
-            "scripts/customElements.js":"",
-            "scripts/elements/settings-btn.js":"",
-            "password.html":""
-        }},
-        "41":{"files":{
-            "assetPage.html":"",
-            "index.html":"",
-            "main.js":"",
-            "scripts/elements/multi-view.js":"",
-            "scripts/elements/pg-tab.js":"",
-            "scripts/elements/settings-btn.js":"",
-            "scripts/elements/webview.js":""
-        }},
-        "42":{"files":{
-            "index.html":"",
-            "style.css":"",
-            "scripts/elements/m-settings.js":"",
-            "scripts/elements/settings-btn.js":""
-        }},
-        "43":{"files":{
-            "index.html":"",
-            "password.html":"",
-            "style.css":"",
-            "scripts/customElements.js":"",
-            "scripts/elements/ch-min.js":"",
-            "scripts/elements/current-page.js":"",
-            "scripts/elements/omni-box.js":"",
-            "scripts/elements/page-suggestion.js":"",
-            "scripts/elements/pg-tab.js":"",
-            "scripts/elements/sch-ipt.js":"",
-            "scripts/elements/search-bar.js":"",
-            "scripts/elements/webview.js":"",
-            "package.json":"",
-            "scripts/elements/all-escape.js":""
-        }},
-        "44":{"files":{
-            "main.js":"",
-            "scripts/mozExt":"mkdir",
-            "scripts/v8Ext":"mkdir",
-            "scripts/mozExt/browser.js":"",
-            "scripts/mozExt/clipboard.js":"",
-            "scripts/mozExt/package.json":"",
-            "scripts/v8Ext/clipboard.js":""
-        }},
-        "45":{"files":{
-            "main.js":"",
-            "style.css":"",
-            "pages":"mkdir",
-            "pages/home.html":"",
-            "scripts/redirects.js":"",
-            "scripts/elements/grid-view.js":"",
-            "scripts/elements/min-page.js":"",
-            "scripts/elements/omni-box.js":"",
-            "scripts/elements/webview.js":""
-        }},
-        "46":{"files":{
-            "style.css":"",
-            "scripts/customElements.js":"",
-            "scripts/elements/multi-view.js":"",
-            "scripts/elements/pg-tab.js":"",
-            "scripts/elements/tab-info.js":""
-        }},
-        "47":{"files":{
-            "scripts/v8Ext/storage.js":""
-        }}
+    "patches": {
+        "1": {
+            "files": {}
+        },
+        "2": {
+            "files": {
+                "scripts/lock.js": ""
+            }
+        },
+        "3": {
+            "files": {
+                "style.css": ""
+            }
+        },
+        "4": {
+            "files": {
+                "style.css": ""
+            }
+        },
+        "5": {
+            "files": {
+                "style.css": "",
+                "scripts/elements/pg-tab.js": "",
+                "scripts/elements.js": ""
+            }
+        },
+        "6": {
+            "files": {
+                "style.css": "",
+                "index.html": "",
+                "password.html": "",
+                "scripts/elements/pg-tab.js": "",
+                "scripts/elements/b-ico.js": "",
+                "scripts/elements/book-marks.js": "",
+                "scripts/elements.js": ""
+            }
+        },
+        "7": {
+            "files": {
+                "scripts/updater.js": "",
+                "main.js": ""
+            }
+        },
+        "8": {
+            "files": {
+                "password.html": ""
+            }
+        },
+        "9": {
+            "files": {
+                "password.html": "",
+                "scripts/elements/multi-view.js": "",
+                "style.css": ""
+            }
+        },
+        "10": {
+            "files": {
+                "scripts/updater.js": ""
+            }
+        },
+        "11": {
+            "files": {
+                "scripts/updater.js": "",
+                "index.js": "",
+                "main.js": ""
+            }
+        },
+        "12": {
+            "files": {
+                "users": "mkdir",
+                "urlToFile.js": "",
+                "main.js": "",
+                "password.html": "",
+                "users/default.user": "",
+                "index.html": "",
+                "scripts/editUser.js": "",
+                "scripts/customElements.js": "",
+                "scripts/elements/add-mark.js": "",
+                "scripts/elements/add-tab.js": "",
+                "scripts/elements/ch-exit": "",
+                "scripts/elements/ch-max.js": "",
+                "scripts/elements/ch-min.js": "",
+                "scripts/elements/pg-back.js": "",
+                "scripts/elements/pg-forward.js": "",
+                "scripts/elements/pg-refresh.js": "",
+                "scripts/elements/settings-ico.js": "",
+                "scripts/elements/z-in.js": "",
+                "scripts/elements/z-out.js": "",
+                "scripts/handlers.js": "",
+                "scripts/bookmarks.js": "",
+                "scripts/history.js": "",
+                "historypage.html": "",
+                "bookmarkspage.html": "",
+                "scripts/settingsparser.js": "",
+                "settings.html": "",
+                "scripts/updater.js": ""
+            }
+        },
+        "13": {
+            "files": {
+                "password.html": ""
+            }
+        },
+        "14": {
+            "files": {
+                "password.html": "",
+                "scripts/elements/m-settings.js": "",
+                "scripts/elements/multi-view.js": "",
+                "style.css": ""
+            }
+        },
+        "15": {
+            "files": {
+                "password.html": ""
+            }
+        },
+        "16": {
+            "files": {
+                "scripts/elements/webview.js": ""
+            }
+        },
+        "17": {
+            "files": {
+                "scripts/updater.js": ""
+            }
+        },
+        "18": {
+            "files": {
+                "scripts/updater.js": ""
+            }
+        },
+        "19": {
+            "files": {
+                "scripts/elements/webview.js": ""
+            }
+        },
+        "20": {
+            "files": {
+                "password.html": ""
+            }
+        },
+        "21": {
+            "files": {
+                "settings.html": "",
+                "scripts/settingsparser.js": "",
+                "scripts/elements/webview.js": "",
+                "index.html": ""
+            }
+        },
+        "22": {
+            "files": {
+                "scripts/settingsparser.js": "",
+                "settings.html": "",
+                "scripts/customElements.js": ""
+            }
+        },
+        "23": {
+            "files": {
+                "scripts/customElements.js": ""
+            }
+        },
+        "24": {
+            "files": {
+                "index.html": "",
+                "main.js": "",
+                "password.html": "",
+                "style.css": "",
+                "scripts/customElements.js": "",
+                "scripts/tabContext.js": "",
+                "scripts/webviewPreload.js": "",
+                "scripts/webviewele.js": "",
+                "scripts/elements/text-finder.js": ""
+            }
+        },
+        "25": {
+            "files": {
+                "scripts/customElements.js": ""
+            }
+        },
+        "26": {
+            "files": {
+                "cache": "mkdir",
+                "package.json": "",
+                "package-lock.json": "",
+                "main.js": "",
+                "scripts/redirects.js": ""
+            }
+        },
+        "27": {
+            "files": {
+                "package-lock.json": "",
+                "package.json": "",
+                "scripts/redirects.js": "",
+                "main.js": ""
+            }
+        },
+        "28": {
+            "files": {
+                "main.js": "",
+                "package-lock.json": "",
+                "package.json": "",
+                "cache/require.min.js": "",
+                "scripts/redirects.js": ""
+            }
+        },
+        "29": {
+            "files": {
+                "package-lock.json": "",
+                "package.json": ""
+            }
+        },
+        "30": {
+            "files": {
+                "package-lock.json": "",
+                "package.json": "",
+                "scripts/redirects.js": "",
+                "index.html": "",
+                "password.html": "",
+                "style.css": "",
+                "scripts/icons.js": "",
+                "scripts/elements/ch-exit.js": "",
+                "scripts/elements/ch-max.js": "",
+                "scripts/elements/ch-min.js": ""
+            }
+        },
+        "31": {
+            "files": {
+                "package-lock.json": "",
+                "package.json": "",
+                "scripts/redirects.js": "",
+                "style.css": ""
+            }
+        },
+        "32": {
+            "files": {
+                "main.js": "",
+                "scripts/elements/st-pkg.js": ""
+            }
+        },
+        "33": {
+            "files": {
+                "scripts/elements/st-pkg.js": ""
+            }
+        },
+        "34": {
+            "files": {
+                "scripts/elements/ch-exit.js": "",
+                "scripts/updater.js": ""
+            }
+        },
+        "35": {
+            "files": {
+                "scripts/updater.js": ""
+            }
+        },
+        "36": {
+            "files": {
+                "scripts/updater.js": ""
+            }
+        },
+        "37": {
+            "files": {
+                "scripts/updater.js": ""
+            }
+        },
+        "38": {
+            "files": {}
+        },
+        "39": {
+            "files": {
+                "scripts/updater.js": ""
+            }
+        },
+        "40": {
+            "files": {
+                "index.html": "",
+                "settings.html": "",
+                "style.css": "",
+                "scripts/customElements.js": "",
+                "scripts/elements/settings-btn.js": "",
+                "password.html": ""
+            }
+        },
+        "41": {
+            "files": {
+                "assetPage.html": "",
+                "index.html": "",
+                "main.js": "",
+                "scripts/elements/multi-view.js": "",
+                "scripts/elements/pg-tab.js": "",
+                "scripts/elements/settings-btn.js": "",
+                "scripts/elements/webview.js": ""
+            }
+        },
+        "42": {
+            "files": {
+                "index.html": "",
+                "style.css": "",
+                "scripts/elements/m-settings.js": "",
+                "scripts/elements/settings-btn.js": ""
+            }
+        },
+        "43": {
+            "files": {
+                "index.html": "",
+                "password.html": "",
+                "style.css": "",
+                "scripts/customElements.js": "",
+                "scripts/elements/ch-min.js": "",
+                "scripts/elements/current-page.js": "",
+                "scripts/elements/omni-box.js": "",
+                "scripts/elements/page-suggestion.js": "",
+                "scripts/elements/pg-tab.js": "",
+                "scripts/elements/sch-ipt.js": "",
+                "scripts/elements/search-bar.js": "",
+                "scripts/elements/webview.js": "",
+                "package.json": "",
+                "scripts/elements/all-escape.js": ""
+            }
+        },
+        "44": {
+            "files": {
+                "main.js": "",
+                "scripts/mozExt": "mkdir",
+                "scripts/v8Ext": "mkdir",
+                "scripts/mozExt/browser.js": "",
+                "scripts/mozExt/clipboard.js": "",
+                "scripts/mozExt/package.json": "",
+                "scripts/v8Ext/clipboard.js": ""
+            }
+        },
+        "45": {
+            "files": {
+                "main.js": "",
+                "style.css": "",
+                "pages": "mkdir",
+                "pages/home.html": "",
+                "scripts/redirects.js": "",
+                "scripts/elements/grid-view.js": "",
+                "scripts/elements/min-page.js": "",
+                "scripts/elements/omni-box.js": "",
+                "scripts/elements/webview.js": ""
+            }
+        },
+        "46": {
+            "files": {
+                "style.css": "",
+                "scripts/customElements.js": "",
+                "scripts/elements/multi-view.js": "",
+                "scripts/elements/pg-tab.js": "",
+                "scripts/elements/tab-info.js": ""
+            }
+        },
+        "47": {
+            "files": {
+                "scripts/v8Ext/storage.js": ""
+            }
+        },
+        "48": {
+            "files": {
+                "password.html": "",
+                "scripts/elements/omni-box.js": "",
+                "scripts/elements/page-suggestion.js": "",
+                "scripts/elements/sch-ipt.js": "",
+                "scripts/elements/settings-btn.js": "",
+                "scripts/elements/tab-info.js": "",
+                "scripts/elements/webview.js": "",
+                "scripts/v8Ext/tabs.js": "",
+                "style.css": ""
+            }
+        },
+        "49": {
+            "files": {
+                "password.html": "",
+                "scripts/elements/omni-box.js": "",
+                "scripts/elements/page-suggestion.js": "",
+                "scripts/elements/sch-ipt.js": "",
+                "scripts/elements/settings-btn.js": "",
+                "scripts/elements/tab-info.js": "",
+                "scripts/elements/webview.js": "",
+                "scripts/v8Ext/tabs.js": "",
+                "style.css": ""
+            }
+        }
     }
 }

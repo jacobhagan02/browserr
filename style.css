@@ -241,7 +241,7 @@ tb-title{
     overflow:hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: calc(20vw - 70px);
+    max-width: 200px;
 }
 
 add-tab{

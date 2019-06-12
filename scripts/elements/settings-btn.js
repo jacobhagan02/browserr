@@ -4,6 +4,7 @@ function findTxt(){
 
 function zin(){
     getCurrentView().getZoomFactor(factor=>{
+        console.log(zoomFactorChange)
         getCurrentView().setZoomFactor(factor + zoomFactorChange);
     });
 }
@@ -42,9 +43,9 @@ module.exports = class extends HTMLElement {
             {label:"Bookmarks",click:bookmarksWindow},
             {type:"separator"},
             {label: "Zoom",submenu:[
-                {label:"Zoom In",click:zin},
-                {label:"Zoom Out",click:zout},
-                {label: "Reset",click:zReset}
+                {role : 'zoomin'},
+                {role: 'zoomout'},
+                {role: 'resetzoom'}
             ]},
             {type:"separator"},
             {label:"Settings",click:settingsWindow},
@@ -52,6 +53,7 @@ module.exports = class extends HTMLElement {
             {label: "Multi View", click: openMultiView}
         ]);
 
+        // console.log(e);
         mnu.popup({y:e.target.offsetTop+25,x:e.target.offsetLeft})
     }
 }

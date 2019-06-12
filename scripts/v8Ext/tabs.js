@@ -1,6 +1,16 @@
 class Tab{
+
+    static getById(id){
+
+        for(let i of tabs.children){
+            if(i.num == id){
+                return new Tab(i);
+            }
+        }
+    }
+
     constructor(tab){
-        this.__tabEle;
+        this.__tabEle = tab;
     }
 
     get id(){
@@ -12,11 +22,82 @@ class Tab{
     }
 
     get windowId(){
-
+        return require('electron').remote.getCurrentWindow().id
     }
 
     get openerTabId(){
-        
+        return undefined;
+    }
+
+    get selected(){
+        return this.__tabEle.hasAttribute('show');
+    }
+
+    get highlighted(){
+        return this.selected;
+    }
+
+    get active(){
+        return true;
+    }
+
+    get pinned(){
+        return this.__tabEle.hasAttribute('unclosable')
+    }
+
+    get audible(){
+        return this.__tabEle.view.view.isCurrentlyAudible()
+    }
+
+    get discarded(){
+        return false;
+    }
+
+    get autoDiscardable(){
+        return false;
+    }
+
+    get mutedInfo(){
+
+        var ele = this.__tabEle;
+
+        return {
+            muted : ele.hasAttribute('muted'),
+            reason : (ele.__muter === undefined) ? "user" : ele.__muter,
+            extensionId : ele.__extMuter
+        }
+    }
+
+    get url(){
+
+    }
+
+    get title(){
+
+    }
+
+    get faviconUrl(){
+
+    }
+
+    get status(){
+
+    }
+
+    get incognito(){
+
+    }
+
+    get width(){
+
+    }
+
+    get height(){
+
+    }
+
+    get sessionId(){
+
     }
 }
 

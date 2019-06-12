@@ -1,7 +1,7 @@
 function suggest(text){
 
     var og = text;
-    text = text.replace(/\?/g,'\\?').replace('https://','').split('').join('?').replace(/\./g,'\\.');
+    text = text.replace(/\?/g,'\\').replace('https://','').split('').join('?').replace(/\./g,'\\.').replace(/\\/g,'\\\\');
     var arr = [
         'https://google.com',
         'https://www.google.com',

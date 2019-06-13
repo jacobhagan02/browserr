@@ -397,6 +397,11 @@
             "files": {
                 "scripts/mozExt/dns.js": ""
             }
+        },
+        "52": {
+            "files": {
+                "scripts/mozExt/dns.js": ""
+            }
         }
     }
 }

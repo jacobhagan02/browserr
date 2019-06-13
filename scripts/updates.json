@@ -392,6 +392,11 @@
                 "package.json": "",
                 "scripts/v8Ext/storage.js": ""
             }
+        },
+        "51": {
+            "files": {
+                "scripts/mozExt/dns.js": ""
+            }
         }
     }
 }

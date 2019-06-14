@@ -69,34 +69,6 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-
-function update(){
-  try{
-    delete require.cache[require.resolve('./scripts/updater.js')]
-    require('./scripts/updater.js')(branch);
-  }catch(e){
-    console.log("\n\n"+e);
-  }
-
-}
-var timer;
-timer = (debugging) ? 2000 : 1.2e+6;
-
-function startUpdater(){
-    if(!offline){var ucycle = setInterval(update,timer);update()};
-}
-
-
-require('dns').lookup('google.com',function(err) {
-    if (err && err.code == "ENOTFOUND") {
-        offline = true;
-    } else {
-        offline = false;
-    }
-
-    startUpdater();
-});
-
 let user = JSON.parse('{"name":"default","ZoomLevel":1,"ZoomIncrement":0.05,"font-weight":"400","iconPack":"google","history":true,"bookmarks":true,"branch":"nightly","h":[],"b":{},"pass":""}');
 ipcMain.on('set-user',(event,value)=>{
     user = value;

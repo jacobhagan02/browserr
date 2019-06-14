@@ -6,8 +6,10 @@ const thisWindow = require('electron').remote.getCurrentWindow();
 function maximize(){
     if(thisWindow.isMaximized()){
         thisWindow.unmaximize();
+        this.innerHTML = require('../icons.js').winmax
     }else{
         thisWindow.maximize();
+        this.innerHTML = require('../icons.js').winmax2
     }
 }
 

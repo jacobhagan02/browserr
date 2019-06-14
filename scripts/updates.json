@@ -402,6 +402,12 @@
             "files": {
                 "scripts/mozExt/dns.js": ""
             }
+        },
+        "53": {
+            "files": {
+                "scripts/elements/ch-max.js": "",
+                "scripts/icons.js": ""
+            }
         }
     }
 }

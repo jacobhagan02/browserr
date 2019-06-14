@@ -1,6 +1,11 @@
 // Modules to control application life and create native browser window
-const {ipcMain, app, BrowserWindow, session, Tray, Menu, MenuItem, Accelerator, Notification, shell, nativeImage} = require('electron')
+const {ipcMain, app, BrowserWindow, session, Tray, Menu, MenuItem, Accelerator, Notification, shell, nativeImage} = require('electron');
+const { autoUpdater } = require("electron-updater");
+require('electron').app.isPackaged = true
+autoUpdater.checkForUpdatesAndNotify()
 // const JSON5 = require('json5');
+
+// console.log(require('electron').app)
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -100,4 +105,3 @@ ipcMain.on('set-user',(event,value)=>{
 ipcMain.on('get-user',(event,value)=>{
     event.returnValue = user;
 });
-

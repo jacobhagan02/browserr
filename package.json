@@ -1,11 +1,11 @@
 {
   "name": "browser",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An electron based web browser",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "addChanges" : "node addChanges.js"
+    "addChanges": "node addChanges.js"
   },
   "repository": {
     "type": "git",
@@ -20,17 +20,22 @@
   ],
   "author": "eatmyvenom",
   "license": "CC0-1.0",
-  "devDependencies": {},
+  "devDependencies": {"electron": "^5.0.3"},
   "bugs": {
     "url": "https://github.com/eatmyvenom/browserr/issues"
   },
+  "build": {
+    "appId": "com.eatmyvenom.browserr"
+  },
+  "publish" : [{"provider":"github","owner":"eatmyvenom","releaseType":"release"}],
   "homepage": "https://github.com/electron/browserr#readme",
   "dependencies": {
     "@babel/standalone": "^7.4.5",
     "bootstrap": "^4.3.1",
     "crypto-js": "^3.1.9-1",
-    "electron": "^5.0.3",
+    
     "electron-packager": "^13.1.1",
+    "electron-updater": "^4.0.6",
     "get-website-favicon": "0.0.7",
     "jquery": "^3.4.1",
     "json5": "^2.1.0",

@@ -8,4 +8,4 @@ window.currentTab = window.document.body.querySelector('pg-tab');
 
 require('./webviewele.js');
 require('./customElements.js');
-require('./tabContext.js')
+require('./tabContext.js');

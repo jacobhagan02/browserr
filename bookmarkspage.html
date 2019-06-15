@@ -61,6 +61,7 @@
                     });
 
                     win.loadFile(__dirname+'/index.html');
+                    win.openDevTools();
                     win.webContents.executeJavaScript('getCurrentView().src = "' + openurl + '";');
                 });
 

@@ -1,7 +1,7 @@
 // Modules to control application life and create native browser window
 const {ipcMain, app, BrowserWindow, session, Tray, Menu, MenuItem, Accelerator, Notification, shell, nativeImage} = require('electron');
 const { autoUpdater } = require("electron-updater");
-require('electron').app.isPackaged = true
+// require('electron').app.isPackaged = true
 autoUpdater.checkForUpdatesAndNotify()
 // const JSON5 = require('json5');
 

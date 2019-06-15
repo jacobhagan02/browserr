@@ -14,3 +14,5 @@ exports.winx = `<svg id="WINX" width="12" height="12" viewBox="0 0 12 12"><polyg
 exports.winmax = `<svg id="WINMAX" width="12" height="12" viewBox="0 0 12 12"><rect width="9" height="9" x="1.5" y="1.5" fill="none" stroke="#ffffff"></rect></svg>`
 
 exports.winmin = `<svg id="WINMin" width="12" height="12" viewBox="0 0 12 12"><rect fill="#ffffff" width="10" height="1" x="1" y="6"></rect></svg>`
+
+exports.winmax2 = `<svg id="WINMAX" width='12' height='12' viewBox='0 0 12 12' fill='black' stroke="black" stroke-width="0" ><path d='M11 8.798H8.798V11H0V2.202h2.202V0H11v8.798zm-3.298-5.5h-6.6v6.6h6.6v-6.6zM9.9 1.1H3.298v1.101h5.5v5.5h1.1v-6.6z' fill='%23000' /></svg>`

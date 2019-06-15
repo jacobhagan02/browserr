@@ -40,6 +40,7 @@ function handleWindowRequest(event){
     disposition = event.disposition; /* can be one of: default, foreground-tab, background-tab, new-window, save-to-disk, other. */
     options = event.options; /* like if you were to make a new browserWindow, its the exact same options as that */
 
+    console.log(event)
     // for now just make a new tab, but later add functionality for stuff like background tabs and stuff.
     // downloads will be webview.downloadFile()
     // console.log(event)
@@ -127,7 +128,9 @@ module.exports = class wv extends HTMLElement{
             var ws = window.document.createAttribute("disablewebsecurity");
             var webp = window.document.createAttribute("webpreferences");
             var full = window.document.createAttribute("allowfullscreen");
-            if(window.settings.homePage == undefined){
+            if(this.hasAttribute('src')){
+                a.value = this.getAttribute('src')
+            }else if(window.settings.homePage == undefined){
                 require('../editUser.js').set('homePage','https://www.google.com');
                 a.value = 'https://www.google.com';
             }else{

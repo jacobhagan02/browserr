@@ -1,5 +1,8 @@
 function suggest(text){
 
+    if(text === undefined){
+        return
+    }
     var og = text;
     text = text.replace(/\?/g,'\\').replace('https://','').split('').join('?').replace(/\./g,'\\.').replace(/\\/g,'\\\\');
     var arr = [

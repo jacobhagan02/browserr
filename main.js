@@ -25,7 +25,7 @@ function createWindow () {
     minHeight: 100
   });
   mainWindow.loadFile('password.html');
-  mainWindow.openDevTools();
+  // mainWindow.openDevTools();
   mainWindow.on('closed',()=>mainWindow = null);
 }
 

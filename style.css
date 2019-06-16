@@ -153,7 +153,7 @@ search-bar{background:rgb(220,220,220);height:25px;display:inline-block;flex-gro
 other-settings{
     padding:10px;
     position: absolute;
-    width: 175px;
+    width: 150px;
     height: auto;
     display: none;
     top: 75px;
@@ -165,6 +165,7 @@ other-settings{
     border-style:solid;
     border-width:2px;
     border-color:white;
+    z-index: 99;
 }
 
 settings-btn{
@@ -189,7 +190,7 @@ settings-btn:hover{
     /* border-color:black; */
 }
 
-st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,m-settings,st-label,st-pkg,st-multi,st-settings,st-find,st-dev,st-zs{
+st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,/* m-settings, */st-label,st-pkg,st-multi,st-settings,st-find,st-dev,st-zs{
     display:block;
     width:130px;
     padding:5px;
@@ -205,13 +206,16 @@ page-zoom{
     justify-content: space-evenly;
 }
 
-st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,m-settings:hover,page-zoom:hover,st-label:hover,st-pkg:hover,st-multi:hover,st-settings:hover,st-find:hover,st-dev:hover,st-zs:hover{
+st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,/* m-settings:hover, */page-zoom:hover,st-label:hover,st-pkg:hover,st-multi:hover,st-settings:hover,st-find:hover,st-dev:hover,st-zs:hover{
     border: 1px solid black;
     background: lightgray;
     /* padding: 7.5px; */
 }
 
 st-br{
+    padding:0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     border:none;
     border-top-style: solid;
     border-color: lightgray;
@@ -627,4 +631,5 @@ pg-tab:hover > tab-info{
 
 z-full{
     text-align: center;
+    align-self: center;
 }

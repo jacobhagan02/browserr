@@ -25,6 +25,8 @@ module.exports = class extends HTMLElement {
                         if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
                     });
                 }
+                document.querySelector('tb-title').innerHTML = 'loading...'
+                document.querySelector('omni-box').hide()
                 
 
                 

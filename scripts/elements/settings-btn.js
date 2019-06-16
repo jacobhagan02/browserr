@@ -23,7 +23,7 @@ function openMultiView(){
     document.querySelector('m-settings').classList.toggle("display");
 }
 
-module.exports = class extends HTMLElement {    
+module.exports = class extends HTMLElement {
     constructor(){
         super();
         // this.addEventListener('click',this.settingsMenu);
@@ -32,7 +32,13 @@ module.exports = class extends HTMLElement {
 
     clickEvent(e){
         if(!e.path.includes(document.querySelector('other-settings')))
-            this.querySelector('other-settings').classList.toggle('display')
+        {
+            if(this.querySelector('other-settings').classList.contains('display')){
+                document.querySelectorAll('all-escape').forEach(e=>e.parentElement.removeChild(e));
+            }
+            this.querySelector('other-settings').classList.toggle('display');
+            document.querySelector('multi-view').appendChild(document.createElement('all-escape'));
+        }
     }
 
     settingsMenu(e){

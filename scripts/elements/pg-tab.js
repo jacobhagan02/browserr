@@ -12,6 +12,33 @@ function handlePin(){
 
 }
 
+function handleRemove(current){
+    if(tabs.children.length == 0){
+        require('electron').remote.getCurrentWindow().close();
+    } else{
+        var tab = document.querySelector(`web--view[num='${current.num}']`).tab;
+
+        /* console.log(tab.view.show);
+        console.log(tab.setAttribute);
+        console.log(tab); /**/
+
+        tab.view.show();
+        tab.setAttribute('show','');
+        window.currentTab = tab;
+        tab.classList.add('tabSelect');
+
+        /* console.log(tab.view.show);
+        console.log(tab.setAttribute);
+        console.log(currentTab); */
+
+        if(tabs.offsetTop < 23){
+            handleTooSmall();
+        }
+    }
+    if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
+    document.querySelector('multi-view').refresh();
+}
+
 function newWinBig(openurl){
     var win = new BrowserWindow({
         width: 800,
@@ -174,40 +201,26 @@ module.exports = class extends HTMLElement {
     }
 
     remove(){
+        if(this.parentElement.num == 0)
+            handleRemove(this.parentElement.nextElementSibling);
+        else
+            handleRemove(this.parentElement.previousElementSibling);
 
         if(this.parentElement.getAttribute('unclosable')!='true'){
             this.parentElement.view.remove();
             tabs.removeChild(this.parentElement);
-    
-            if(tabs.children.length == 0){
-                require('electron').remote.getCurrentWindow().close();
-            } else{
-                tabs.children[0].show();
-                if(tabs.offsetTop < 17){
-                    handleTooSmall();
-                }
-            }
-            if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
-            document.querySelector('multi-view').refresh();
         }
     }
 
     tRemove(){
+        if(this.num == 0)
+            handleRemove(this.nextElementSibling);
+        else
+            handleRemove(this.previousElementSibling);
+
         if(this.getAttribute('unclosabe')!='true'){
             this.view.remove();
             tabs.removeChild(this);
-    
-            if(tabs.children.length == 0){
-                require('electron').remote.getCurrentWindow().close();
-            } else{
-                tabs.children[0].show();
-                if(tabs.offsetTop < 23){
-                    handleTooSmall();
-                }
-            }
-            if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
-            document.querySelector('multi-view').refresh();
         }
-
     }
 }

@@ -47,7 +47,7 @@ autoUpdater.on('update-downloaded', (info)=>{
     type: 'info',
     buttons: ['Restart', 'Later'],
     title: 'Application Update',
-    message: 'There is a new patch available for Browserr',
+    message: info.releaseNotes,
     detail: 'A new version has been downloaded. Restart the application to apply the updates.'
   }
 

@@ -136,11 +136,11 @@ let mnu = Menu.buildFromTemplate(
         },
     
     {label:'Current Tab', submenu: [
-        {label:'Close Tab',accelerator : 'Ctrl+W',click:closeTab},
-        {label:'Dev Tools',accelerator:'Ctrl+Shift+I',click:openDevTools},
-        {label:'New Tab',accelerator:'Ctrl+T',click:newTab},
-        {label:'New Window',accelerator:'Ctrl+N',click:newWindow},
-        {label:'Find In Page',accelerator:'Ctrl+F',click:findTxt}
+        {label:'Close Tab',accelerator : 'CmdOrCtrl+W',click:closeTab},
+        {label:'Dev Tools',accelerator:'CmdOrCtrl+Shift+I',click:openDevTools},
+        {label:'New Tab',accelerator:'CmdOrCtrl+T',click:newTab},
+        {label:'New Window',accelerator:'CmdOrCtrl+N',click:newWindow},
+        {label:'Find In Page',accelerator:'CmdOrCtrl+F',click:findTxt}
 ]}]);
 
 Menu.setApplicationMenu(mnu);

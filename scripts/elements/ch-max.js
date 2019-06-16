@@ -6,12 +6,20 @@ const thisWindow = require('electron').remote.getCurrentWindow();
 function maximize(){
     if(thisWindow.isMaximized()){
         thisWindow.unmaximize();
-        this.innerHTML = require('../icons.js').winmax
+        // this.innerHTML = require('../icons.js').winmax
     }else{
         thisWindow.maximize();
-        this.innerHTML = require('../icons.js').winmax2
+        // this.innerHTML = require('../icons.js').winmax2
     }
 }
+
+require('electron').remote.getCurrentWindow().on('maximize',()=>{
+    document.querySelector('ch-max').setMaxBtn(2);
+});
+
+require('electron').remote.getCurrentWindow().on('unmaximize',()=>{
+    document.querySelector('ch-max').setMaxBtn(1);
+});
 
 module.exports = class extends HTMLElement {
     constructor(){
@@ -26,5 +34,9 @@ module.exports = class extends HTMLElement {
         if(process.platform === 'darwin'){
             this.style.display = 'none'
         }
+    }
+
+    setMaxBtn(num){
+        this.innerHTML = require('../icons.js')['winmax' + ((num==2) ? "2" : "")]
     }
 }

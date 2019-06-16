@@ -10,7 +10,7 @@ let offline = false;
 let redirs = require('./scripts/redirects.js')
 
 function createWindow () {
-  let hasFrame = process.platform ==='darwin'
+  // let hasFrame = process.platform ==='darwin'
   mainWindow = new BrowserWindow({
     width: 300,
     height: 400,
@@ -18,7 +18,8 @@ function createWindow () {
       nodeIntegration: true
     },
     icon: './svgs/images.png',
-    frame: hasFrame,
+    frame: false,
+    titleBarStyle : "hidden",
     backgroundColor: '#ffffff',
     minWidth: 200,
     minHeight: 100

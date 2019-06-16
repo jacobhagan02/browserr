@@ -3,4 +3,11 @@ module.exports = class extends HTMLElement {
         super();
 
     }
+
+    connectedCallback(){
+        if(process.platform === 'darwin'){
+            this.style.paddingLeft = '70px';
+            
+        }
+    }
 }

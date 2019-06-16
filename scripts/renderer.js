@@ -16,6 +16,8 @@ require('electron').remote.getCurrentWindow().on('maximize',()=>{
     else
         document.querySelector('ch-max').setMaxBtn(2);
     
+
+    console.trace()
 });
 
 require('electron').remote.getCurrentWindow().on('unmaximize',()=>{
@@ -23,4 +25,6 @@ require('electron').remote.getCurrentWindow().on('unmaximize',()=>{
         document.querySelector('page-tabs').style.paddingLeft = '70px';
     else
         document.querySelector('ch-max').setMaxBtn(1);
+
+    console.trace()
 });

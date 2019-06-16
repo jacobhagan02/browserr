@@ -20,7 +20,8 @@
   "author": "eatmyvenom",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^5.0.3"
+    "electron": "^5.0.3",
+    "electron-builder": "^20.43.0"
   },
   "bugs": {
     "url": "https://github.com/eatmyvenom/browserr/issues"
@@ -46,6 +47,7 @@
     "jquery": "^3.4.1",
     "json5": "^2.1.0",
     "npm": "^6.9.0",
+    "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "requirejs": "^2.3.6",

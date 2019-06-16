@@ -16,7 +16,11 @@ module.exports = class extends HTMLElement {
             
     }
 
+
     connectedCallback(){
         this.addEventListener('click',minimize);
+        if(process.platform === 'darwin'){
+            this.style.display = 'none'
+        }
     }
 }

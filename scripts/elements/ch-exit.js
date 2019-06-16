@@ -12,5 +12,11 @@ module.exports = class extends HTMLElement {
             this.innerHTML = require('../icons.js').winx
 
             this.addEventListener('click',close);
+    } 
+
+    connectedCallback(){
+        if(process.platform === 'darwin'){
+            this.style.display = 'none'
+        }
     }
 }

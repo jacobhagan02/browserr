@@ -5,3 +5,4 @@ scripts/history.json
 .github/
 .vscode/tasks.json
 dist
+.DS_Store

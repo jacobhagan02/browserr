@@ -21,4 +21,10 @@ module.exports = class extends HTMLElement {
 
             this.addEventListener('click',maximize);
     }
+
+    connectedCallback(){
+        if(process.platform === 'darwin'){
+            this.style.display = 'none'
+        }
+    }
 }

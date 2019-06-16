@@ -10,6 +10,7 @@ let offline = false;
 let redirs = require('./scripts/redirects.js')
 
 function createWindow () {
+  let hasFrame = process.platform ==='darwin'
   mainWindow = new BrowserWindow({
     width: 300,
     height: 400,
@@ -17,13 +18,13 @@ function createWindow () {
       nodeIntegration: true
     },
     icon: './svgs/images.png',
-    frame: false,
+    frame: hasFrame,
     backgroundColor: '#ffffff',
     minWidth: 200,
     minHeight: 100
   });
   mainWindow.loadFile('password.html');
-  // mainWindow.openDevTools();
+  mainWindow.openDevTools();
   mainWindow.on('closed',()=>mainWindow = null);
 }
 

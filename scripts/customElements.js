@@ -323,3 +323,8 @@ def('current-page');
 def('page-suggestion');
 def('all-escape');
 def('tab-info');
+def('st-dev');
+def('st-find');
+def('st-multi');
+def('st-settings');
+def('st-zs');

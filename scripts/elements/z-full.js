@@ -4,8 +4,8 @@ module.exports = class extends HTMLElement {
         
         this.addEventListener('click',this.action);
         
-        let shadowRoot = this.attachShadow({mode:'open'});
-        shadowRoot.innerHTML = 'Reset';
+        // let shadowRoot = this.attachShadow({mode:'open'});
+        this.innerHTML = 'Reset';
     }
 
     action(){

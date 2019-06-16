@@ -158,13 +158,13 @@ other-settings{
     display: none;
     top: 75px;
     right:0;
-    background: lightgrey;
-    border-radius:15px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    background: white;
+    /* border-radius:15px; */
+    /* border-top-right-radius: 0px; */
+    /* border-bottom-right-radius: 0px; */
     border-style:solid;
     border-width:2px;
-    border-color:black;
+    border-color:white;
 }
 
 settings-btn{
@@ -189,14 +189,15 @@ settings-btn:hover{
     /* border-color:black; */
 }
 
-/*st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,m-settings,st-label,st-pkg{
+st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,m-settings,st-label,st-pkg,st-multi,st-settings,st-find,st-dev,st-zs{
     display:block;
     width:130px;
     padding:5px;
-    border: 1px solid darkgray;
-    border-radius:5px;
+    border: 1px solid white;
+    /* border-radius:5px; */
     -webkit-user-select: none;
-}*/
+    color:#000000;
+}
 
 page-zoom{
     display: flex;
@@ -204,18 +205,23 @@ page-zoom{
     justify-content: space-evenly;
 }
 
-/*st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,m-settings:hover,page-zoom:hover,st-label:hover,st-pkg:hover{
+st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,m-settings:hover,page-zoom:hover,st-label:hover,st-pkg:hover,st-multi:hover,st-settings:hover,st-find:hover,st-dev:hover,st-zs:hover{
     border: 1px solid black;
-    background: rgb(230,230,230);
-    padding: 7.5px;
+    background: lightgray;
+    /* padding: 7.5px; */
 }
 
 st-br{
     border:none;
-}*/
+    border-top-style: solid;
+    border-color: lightgray;
+}
 
-settingsbtn:hover other-settings, other-settings > img{
+other-settings.display, other-settings.display > img{
     display:inline-block;
+    border-style: solid;
+    border-width:1px;
+    border-color:black;
 }
 
 
@@ -407,14 +413,19 @@ add-mark:hover img, z-in:hover img, z-out:hover img{
     filter: invert(100);
 }
 
-z-in,z-out{
+z-in,z-out,z-in > img, z-out > img{
     width:25px;
     height:25px;
-    border-radius:50%;
+    border-radius:0px;
 }
 
 z-in:hover,z-out:hover{
     background:darkgray;
+}
+
+st-zs{
+    display:inline-grid;
+    grid-template-columns: auto auto auto;
 }
 
 multi-view{
@@ -612,4 +623,8 @@ tab-info{
 pg-tab:hover > tab-info{
     height: 45px;
     padding:5px;
+}
+
+z-full{
+    text-align: center;
 }

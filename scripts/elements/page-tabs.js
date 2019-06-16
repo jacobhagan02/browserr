@@ -1,8 +1,8 @@
-require('electron').remote.getCurrentWindow().on('maximize',()=>{
+require('electron').remote.getCurrentWindow().on('enter-full-screen',()=>{
     document.querySelector('page-tabs').style.paddingLeft = '';
 });
 
-require('electron').remote.getCurrentWindow().on('unmaximize',()=>{
+require('electron').remote.getCurrentWindow().on('leave-full-screen',()=>{
     document.querySelector('page-tabs').style.paddingLeft = '70px'
 });
 

@@ -9,22 +9,3 @@ window.currentTab = window.document.body.querySelector('pg-tab');
 require('./webviewele.js');
 require('./customElements.js');
 require('./tabContext.js');
-
-require('electron').remote.getCurrentWindow().on('maximize',()=>{
-    if(process.platform === 'darwin')
-        document.querySelector('page-tabs').style.paddingLeft = '';
-    else
-        document.querySelector('ch-max').setMaxBtn(2);
-    
-
-    console.trace()
-});
-
-require('electron').remote.getCurrentWindow().on('unmaximize',()=>{
-    if(process.platform === 'darwin')
-        document.querySelector('page-tabs').style.paddingLeft = '70px';
-    else
-        document.querySelector('ch-max').setMaxBtn(1);
-
-    console.trace()
-});

@@ -1,3 +1,8 @@
+function closeTab(){
+    //console.log(window.currentTab.tRemove)
+    window.currentTab.tRemove();
+}
+
 module.exports = class extends HTMLElement {    
     constructor(){
         super();

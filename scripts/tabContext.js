@@ -1,7 +1,7 @@
 const rmt = require('electron').remote;
 const Menu = rmt.Menu;
 //console.log(Menu);
-// Menu.setApplicationMenu(null);
+Menu.setApplicationMenu(null);
 const BrowserWindow = rmt.BrowserWindow;
 
 window.makeWebv = function makeWebv(url = "https://google.com"){
@@ -17,7 +17,7 @@ window.makeWebv = function makeWebv(url = "https://google.com"){
 }
 
 function changeWindow(){
-    // Menu.setApplicationMenu(mnu);
+    Menu.setApplicationMenu(mnu);
 }
 
 rmt.getCurrentWindow().on('focus',changeWindow)
@@ -58,7 +58,7 @@ let mnu = Menu.buildFromTemplate([
     {label:'Find In Page',accelerator:'Ctrl+F',click:findTxt}
 ]);
 
-// Menu.setApplicationMenu(mnu);
+Menu.setApplicationMenu(mnu);
 
 function findTxt(){
     document.querySelector('text-finder').style.display = 'inline-block';

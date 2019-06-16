@@ -12,24 +12,31 @@ function handlePin(){
 
 }
 
+function closeTab(tab){
+    //console.log(window.currentTab.tRemove)
+    tab.tRemove();
+}
+
 function handleRemove(current){
     if(tabs.children.length == 0){
         require('electron').remote.getCurrentWindow().close();
     } else{
         var tab = document.querySelector(`web--view[num='${current.num}']`).tab;
 
-        /* console.log(tab.view.show);
+        window.currentTab = tab;
+        window.currentTab.show();
+/** /    console.log(tab.view.show);
         console.log(tab.setAttribute);
-        console.log(tab); /**/
+        console.log(tab); /** /
 
         tab.view.show();
         tab.setAttribute('show','');
         window.currentTab = tab;
         tab.classList.add('tabSelect');
 
-        /* console.log(tab.view.show);
+/** /    console.log(tab.view.show);
         console.log(tab.setAttribute);
-        console.log(currentTab); */
+        console.log(currentTab); /**/
 
         if(tabs.offsetTop < 23){
             handleTooSmall();
@@ -181,7 +188,7 @@ module.exports = class extends HTMLElement {
         this.setAttribute('show','');
         currentTab = this;
 
-        this.setAttribute('class','tabSelect');
+        this.classList.add('tabSelect');
     }
 
     hide(){
@@ -200,8 +207,8 @@ module.exports = class extends HTMLElement {
         this.setAttribute("num",n);
     }
 
-    remove(){
-        if(this.parentElement.num == 0)
+    remove(){/*
+        if(this.parentElement.parentElement.children[0] == this.parentElement)
             handleRemove(this.parentElement.nextElementSibling);
         else
             handleRemove(this.parentElement.previousElementSibling);
@@ -209,11 +216,13 @@ module.exports = class extends HTMLElement {
         if(this.parentElement.getAttribute('unclosable')!='true'){
             this.parentElement.view.remove();
             tabs.removeChild(this.parentElement);
-        }
+        }*/
+        // window.currentTab.tRemove();
+        closeTab(document.querySelector('pg-tab[num="' + this.parentElement.num + '"]'));
     }
 
     tRemove(){
-        if(this.num == 0)
+        if(this.parentElement.children[0] == this)
             handleRemove(this.nextElementSibling);
         else
             handleRemove(this.previousElementSibling);

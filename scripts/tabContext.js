@@ -71,7 +71,7 @@ let mnu = Menu.buildFromTemplate(
         {
           label: 'File',
           submenu: [
-            process.platform==='darwin' ? { role: 'close' } : { role: 'quit' }
+            {label: 'Close Window', click:()=>{require('electron').remote.getCurrentWindow().close()}}
           ]
         },
         // { role: 'editMenu' }
@@ -107,10 +107,10 @@ let mnu = Menu.buildFromTemplate(
         {
           label: 'View',
           submenu: [
-            { role: 'reload' },
-            { role: 'forcereload' },
-            { role: 'toggledevtools' },
-            { type: 'separator' },
+            // { role: 'reload' },
+            // { role: 'forcereload' },
+            // { role: 'toggledevtools' },
+            // { type: 'separator' },
             { role: 'resetzoom' },
             { role: 'zoomin' },
             { role: 'zoomout' },

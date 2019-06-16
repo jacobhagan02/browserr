@@ -1,9 +1,11 @@
 require('electron').remote.getCurrentWindow().on('enter-full-screen',()=>{
-    document.querySelector('page-tabs').style.paddingLeft = '';
+    if(process.platform === 'darwin')
+        document.querySelector('page-tabs').style.paddingLeft = '';
 });
 
 require('electron').remote.getCurrentWindow().on('leave-full-screen',()=>{
-    document.querySelector('page-tabs').style.paddingLeft = '70px'
+    if(process.platform === 'darwin')
+        document.querySelector('page-tabs').style.paddingLeft = '70px'
 });
 
 module.exports = class extends HTMLElement {    

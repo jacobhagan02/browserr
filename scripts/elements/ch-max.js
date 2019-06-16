@@ -14,13 +14,13 @@ function maximize(){
 }
 
 require('electron').remote.getCurrentWindow().on('maximize',()=>{
-    console.log('max')
-    document.querySelector('ch-max').setMaxBtn(2);
+    // console.log('max')
+    document.querySelectorAll('ch-max').forEach((e)=>e.setMaxBtn(2));
 });
 
 require('electron').remote.getCurrentWindow().on('unmaximize',()=>{
-    console.log('min')
-    document.querySelector('ch-max').setMaxBtn(1);
+    // console.log('min')
+    document.querySelectorAll('ch-max').forEach((e)=>e.setMaxBtn(2));
 });
 
 module.exports = class extends HTMLElement {
@@ -39,10 +39,10 @@ module.exports = class extends HTMLElement {
     }
 
     setMaxBtn(num){
-        console.log(num)
+        // console.log(num)
         var icn = (num===2) ? "2" : "";
         var file = require('../icons.js')['winmax' + icn]
-        console.log(file)
+        // console.log(file)
         document.querySelectorAll('ch-max').forEach((element,key,parent)=>element.innerHTML = file);
     }
 }

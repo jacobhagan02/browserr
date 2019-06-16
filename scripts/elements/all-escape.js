@@ -5,7 +5,8 @@ function closeSuggestions(){
     for(let i of document.querySelector('omni-box').inputCancel){
         i();
     }
-   
+    
+    document.querySelector('other-settings').hide();
 }
 
 module.exports = class extends HTMLElement{

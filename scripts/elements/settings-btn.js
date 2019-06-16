@@ -26,7 +26,13 @@ function openMultiView(){
 module.exports = class extends HTMLElement {    
     constructor(){
         super();
-        this.addEventListener('click',this.settingsMenu);
+        // this.addEventListener('click',this.settingsMenu);
+        this.addEventListener('click',this.clickEvent);
+    }
+
+    clickEvent(e){
+        if(!e.path.includes(document.querySelector('other-settings')))
+            this.querySelector('other-settings').classList.toggle('display')
     }
 
     settingsMenu(e){

@@ -54,7 +54,7 @@ let mnu = Menu.buildFromTemplate(
         [
         // { role: 'appMenu' }
         ...(process.platform === 'darwin' ? [{
-          label: app.getName(),
+          label: require('electron').remote.app.getName(),
           submenu: [
             { role: 'about' },
             { type: 'separator' },
@@ -71,7 +71,7 @@ let mnu = Menu.buildFromTemplate(
         {
           label: 'File',
           submenu: [
-            isMac ? { role: 'close' } : { role: 'quit' }
+            process.platform==='darwin' ? { role: 'close' } : { role: 'quit' }
           ]
         },
         // { role: 'editMenu' }
@@ -84,7 +84,7 @@ let mnu = Menu.buildFromTemplate(
             { role: 'cut' },
             { role: 'copy' },
             { role: 'paste' },
-            ...(isMac ? [
+            ...(process.platform==='darwin' ? [
               { role: 'pasteAndMatchStyle' },
               { role: 'delete' },
               { role: 'selectAll' },
@@ -124,7 +124,7 @@ let mnu = Menu.buildFromTemplate(
           submenu: [
             { role: 'minimize' },
             { role: 'zoom' },
-            ...(isMac ? [
+            ...(process.platform==='darwin' ? [
               { type: 'separator' },
               { role: 'front' },
               { type: 'separator' },

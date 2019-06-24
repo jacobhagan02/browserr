@@ -16,6 +16,20 @@
 html,body{margin:0;overflow: hidden;font-family: regular;font-size:14px;color:#000000;}
 *{box-sizing: border-box; transition-duration: 0.3s; outline: none;}
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
 tabBar,page-tabs,chrome{
     display:block;
     padding:0px;
@@ -514,13 +528,13 @@ web--view,webview{
 multi-view.enabled{
     display:grid;
     overflow: none;
-    height:calc(100vh - 111.5px);
+    height:calc(100vh - 80px);
 }
 
 multi-view{
     display:block;
     overflow:none;
-    height:calc(100vh - 111.5px);
+    height:calc(100vh - 80px);
 }
 
 text-finder{

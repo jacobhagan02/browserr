@@ -32,6 +32,8 @@ function handleReady(){
     // console.log(this.getWebContents())
     // console.log(this.getWebContents().session.webRequest)
     this.getWebContents().session.webRequest.onBeforeRequest(attachRedirect);
+    this.blur();
+    this.focus();
 }
 
 function handleWindowRequest(event){

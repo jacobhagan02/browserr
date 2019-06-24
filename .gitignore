@@ -6,3 +6,4 @@ scripts/history.json
 .vscode/tasks.json
 dist
 .DS_Store
+.vscode

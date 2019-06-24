@@ -50,6 +50,27 @@ function newWindow(){
     win.loadFile(__dirname+'/index.html');
 }
 
+require('electron').remote.getCurrentWindow().on('resize', ()=>{
+  if(window.outerHeight - window.innerHeight < 0){
+    var diff = window.innerHeight - window.outerHeight
+    document.querySelector('body').style.marginTop = diff + 'px';
+    if(document.querySelector('ch-min')){
+      diff /= 2;
+      document.querySelector('ch-min').style.top = diff + 'px';
+      document.querySelector('ch-max').style.top = diff + 'px';
+      document.querySelector('ch-exit').style.top = diff + 'px';
+    }
+  }else{
+    var diff = 0
+    document.querySelector('body').style.marginTop = diff + 'px';
+    if(document.querySelector('ch-min')){
+      document.querySelector('ch-min').style.top = diff + 'px';
+      document.querySelector('ch-max').style.top = diff + 'px';
+      document.querySelector('ch-exit').style.top = diff + 'px';
+    }
+  }
+});
+
 let mnu = Menu.buildFromTemplate(
         [
         // { role: 'appMenu' }

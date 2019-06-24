@@ -94,14 +94,14 @@ ch-min,ch-max,ch-exit{
     align-items: center;
     position: absolute;
     top:0;
-    width: 25px;
-    height:25px;
+    width: 45px;
+    height:30px;
     justify-content: center;
     background-color: inherit;
     padding:2px;
     border-width:0px;
     /* border-radius: 50%; */
-    zoom: 1.2;
+    /* zoom: 1.2; */
 }
 
 pg-back,pg-forward,pg-refresh{
@@ -129,8 +129,8 @@ ch-exit:hover{
 }
 
 ch-exit{right:0;}
-ch-max{right:25px;}
-ch-min{right:50px;}
+ch-max{right:45px;}
+ch-min{right:90px;}
 
 #WINMin > rect {
     fill: hsl(0,0%,0%);

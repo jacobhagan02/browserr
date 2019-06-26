@@ -3,9 +3,11 @@ module.exports = class extends HTMLElement{
         super();
     }
 
+
     connectedCallback(){
         this.___cols = 1;
         this.___rows = 1;
+        this.innerHTML = '<web--view num="0" disablewebsecurity webpreferences="allowRunningInsecureContent, javascript=yes" ></web--view>'
     }
 
     set cols(num){

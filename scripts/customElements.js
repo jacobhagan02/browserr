@@ -1,7 +1,16 @@
+/**
+ * Function to define a new customElement based on the module
+ * @param {string} name both the name of the customElement that will be avalible in the html, and the directory to read the file from 
+ */
 function def(name){
     customElements.define(name, require('./elements/'+name+'.js'));
 }
 
+/**
+ * Function to turn any text into a url
+ * @param {string} text the raw text of the url to parse 
+ * @param {function} callback a callback function that will call with the new url
+ */
 window.urlify = function urlify(text,callback){
     var es = require('url-exists');
 
@@ -20,31 +29,11 @@ window.urlify = function urlify(text,callback){
     });
 }
 
-window.makeWebv = function makeWebv(url = "https://google.com"){
-
-    /*
-    var vv = window.document.createElement("web--view");
-    var src = window.document.createAttribute('src');
-    src.value = url;
-    var num = window.document.createAttribute('num');
-    num.value = tabs.children.length;
-    var ws = window.document.createAttribute('disablewebsecurity');
-    var wp = window.document.createAttribute('webpreferences');
-    wp.value = "allowRunningInsecureContent, javascript=yes";
-
-    vv.setAttributeNode(src);
-    vv.setAttributeNode(num);
-    vv.setAttributeNode(ws);
-    vv.setAttributeNode(wp);
-
-    var ele = window.document.body.appendChild(vv);
-
-    */
-    //ele.tab.show();
-
-    /*
-    document.body.innerHTML = document.body.innerHTML + '<web--view num="'+ tabs.children.length +'" disablewebsecurity webpreferences="allowRunningInsecureContent, javascript=yes" src="https://google.com"></web--view>';
-    */
+/**
+ * Function that creates the new webview and a tab to go with it
+ * @param {string} url The url that the webview will be loaded with. By default is google
+ */
+window.makeWebv = function makeWebv(url = window.settings.homePage){
 
     let vv = window.document.createElement("web--view");
     vv.setAttribute('num',tabs.children.length);
@@ -56,27 +45,55 @@ window.makeWebv = function makeWebv(url = "https://google.com"){
     window.document.querySelector('multi-view').addChild(vv);
 }
 
-window.searchProvider = "www.google.com";
+window.searchProvider = window.settings.searchProvider;
+if(window.searchProvider == undefined){
+    window.searchProvider = 'www.google.com';
+}
 window.tabs = window.document.querySelector('page-tabs');
 
 
 
-
+/**
+ * Add the specified page to the users history
+ * @param {string} url The specific url that was accessed
+ * @param {string} title The title of the page
+ */
 function addToHistory(url,title){
     History.addItem({url:url,title:title,date:Date.now()});
 }
 
+/**
+ * Creates a new window
+ */
 window.makeNewWin = function makeNewWin(){
-    window.open('index.html');
+    var BrowserWindow = require('electron').remote.BrowserWindow;
+    var win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true,
+            webviewTag: true
+        },
+        icon: './images.png',
+        frame: false,
+        minWidth: '145',
+        minHeight: '100'
+    });
+
+    win.loadFile(__dirname+'/../index.html');
 }
 
+/**
+ * Opens up the settings page so the user can edit their settings
+ */
 window.settingsWindow = function settingsWindow(){
     var BrowserWindow = require('electron').remote.BrowserWindow;
     var win = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            webviewTag: true
         },
         icon: './images.png',
         frame: false,
@@ -88,10 +105,16 @@ window.settingsWindow = function settingsWindow(){
     // win.openDevTools();
 }
 
+/**
+ * Opens the bookmarks page so the user can view and edit their bookmarks
+ */
 window.bookmarksWindow = function bookmarksWindow(){
     window.open('bookmarkspage.html')
 }
 
+/**
+ * Opens up the historyWindow so the user can view all the pages they have visited
+ */
 window.historyWindow = function historyWindow(){
     var BrowserWindow = require('electron').remote.BrowserWindow;
     var win = new BrowserWindow({
@@ -110,22 +133,20 @@ window.historyWindow = function historyWindow(){
     // win.openDevTools();
 }
 
+/**
+ * Sets the background color of the windows chrome - Mostly useless but will stay here because it might be useful at some point
+ * @param {number} r red
+ * @param {number} g green
+ * @param {number} b blue
+ */
 function changeChrome(r,g,b){
     document.querySelector('chrome').style.background = `rgb(${r},${g},${b})`;
 }
 
-function handleWindowRequest(event){
-    url = event.url;
-    frameName = event.frameName;
-    disposition = event.disposition; /* can be one of: default, foreground-tab, background-tab, new-window, save-to-disk, other. */
-    options = event.options; /* like if you were to make a new browserWindow, its the exact same options as that */
-
-    // for now just make a new tab, but later add functionality for stuff like background tabs and stuff.
-    // downloads will be webview.downloadFile()
-    //console.log(url);
-    makeWebv(url);
-}
-
+/**
+ * The handler for when the user hovers over a link
+ * @param {Event} event 
+ */
 function handleTargetUrl(event){
     //console.log(event);
 
@@ -140,35 +161,62 @@ function handleTargetUrl(event){
     }
 }
 
+/**
+ * Displays that the page has begun to load
+ * @param {event} e 
+ */
 function handleStartLoad(e){
     window.document.querySelector('ind').display = 'inline-block';
     window.document.querySelector('ind').innerHTML = 'loading...';
 }
 
+/**
+ * Removes the "loading..." text from the indicator
+ * @param {event} e 
+ */
 function handleStopLoad(e){
     window.document.querySelector('ind').display = 'none';
 }
 
+/**
+ * Handler for when the URL is updated
+ * @param {event} event 
+ */
 function handleURLUpdate(event){
     addToHistory(event.url,event.srcElement.getTitle());
 }
 
+/**
+ * Returns the current view based on the first one that is not hidden
+ */
 window.getCurrentView = function getCurrentView(){
     return window.document.querySelector('web--view:not([style="display: none;"])').view;
 }
 
+/**
+ * Opens developer tools for the current web page
+ */
 window.openTools = function openTools(){
     getCurrentView().openDevTools();
 }
 
+/**
+ * Minimizes the window
+ */
 function minimize(){
     require('electron').remote.getCurrentWindow().minimize();
 }
 
+/**
+ * Closes the window
+ */
 function close(){
     require('electron').remote.getCurrentWindow().close()
 }
 
+/**
+ * Maximizes the window
+ */
 function maximize(){
     if(thisWindow.isMaximized()){
         thisWindow.unmaximize();
@@ -177,21 +225,43 @@ function maximize(){
     }
 }
 
-
+/**
+ * Navigates back
+ */
 function pgBack(){
     window.document.querySelector('web--view:not([style="display: none;"])').view.goBack();
 }
 
+/**
+ * Navigates forward
+ */
 function pgForward(){
     window.document.querySelector('web--view:not([style="display: none;"])').view.goForward();
 }
 
+/**
+ * Refreshes the current page
+ */
 function pgRefresh(){
     window.document.querySelector('web--view:not([style="display: none;"])').view.reloadIgnoringCache();
 }
 
+/**
+ * puts the user input in the search input
+ */
 function focusSearchInput(){
     window.document.body.querySelector('search-bar').querySelector('sch-ipt').focus();
+}
+
+function downloadPage(){
+    var dialog = require('electron').remote.dialog
+    
+    dialog.showSaveDialog({title:"Save Page"},(path)=>{
+        getCurrentView().getWebContents().savePage(path,'MHTML',(e)=>{
+            if(!e){}
+        });
+    });
+    
 }
 
 const settings = window.settings;
@@ -245,3 +315,6 @@ def('add-mark');
 def('full-query');
 def('multi-view');
 def('m-settings');
+def('text-finder');
+def('st-pkg');
+def('settings-btn');

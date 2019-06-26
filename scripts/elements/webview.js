@@ -1,6 +1,31 @@
 const History = require('../history.js').History;
-const WebSearch = require('../websearch.js')
+const WebSearch = require('../websearch.js');
+const os = require('os');
+const path = require('path');
 var nonPageItems = [document.querySelector('tabBar'), document.querySelector('toolbar'), document.querySelector('book-marks')];
+var pageLog = [];
+
+function packagePage(url,title){
+    
+    // Make this just a shortcut to the main app with command line args for the url
+}
+
+function attachRedirect(d,c){
+    if(d.resourceType == 'mainFrame'){
+        window.settings.h[window.settings.h.length - 1].pageLog = pageLog;
+        console.log(window.settings.h)
+        pageLog = [d.url];
+    }else{
+        pageLog.push(d.url);
+    }
+
+    require('../redirects.js')(d.url,c);
+}
+
+function handleReady(){
+    // console.log(this.getWebContents())
+    this.getWebContents().session.webRequest.onBeforeRequest(attachRedirect);
+}
 
 function handleWindowRequest(event){
     url = event.url;
@@ -10,6 +35,7 @@ function handleWindowRequest(event){
 
     // for now just make a new tab, but later add functionality for stuff like background tabs and stuff.
     // downloads will be webview.downloadFile()
+    // console.log(event)
     makeWebv(url);
 }
 
@@ -46,10 +72,10 @@ function handleStopLoad(e){
 function handleURLUpdate(event){
 
     document.querySelector('body > toolbar > search-bar > sch-ipt').innerHTML = new WebSearch(event.url).htmlify();
-    console.log(this.src)
+    // console.log(this.src)
     addToHistory(event.url,event.srcElement.getTitle());
 
-    console.log(event);
+    // console.log(event);
 }
 
 function handleFullScreen(event){
@@ -84,7 +110,12 @@ module.exports = class wv extends HTMLElement{
             var ws = window.document.createAttribute("disablewebsecurity");
             var webp = window.document.createAttribute("webpreferences");
             var full = window.document.createAttribute("allowfullscreen");
-            a.value = this.getAttribute('src');
+            if(window.settings.homePage == undefined){
+                require('../editUser.js').set('homePage','https://www.google.com');
+                a.value = 'https://www.google.com';
+            }else{
+                a.value = window.settings.homePage;
+            }
             webp.value = this.getAttribute('webpreferences');
 
             v.setAttributeNode(a);
@@ -104,7 +135,9 @@ module.exports = class wv extends HTMLElement{
             web.addEventListener('did-stop-loading',handleStopLoad);
             web.addEventListener('enter-html-full-screen', handleFullScreen);
             web.addEventListener('leave-html-full-screen', handleNormalScreen);
+            web.addEventListener('dom-ready',handleReady);
             web.setAttribute('preload',`file://${__dirname}/../webviewPreload.js`);
+           
 
             var toptab = window.document.createElement("pg-tab");
             toptab.num = tabs.children.length;
@@ -113,6 +146,7 @@ module.exports = class wv extends HTMLElement{
 
         }
     }
+
 
     hide(){
         this.style.display = 'none';
@@ -139,8 +173,16 @@ module.exports = class wv extends HTMLElement{
         this.setAttribute("num",n);
     }
 
+    get session(){
+        this.view.getWebContents().session;
+    }
+
     remove(){
         this.parentElement.removeChild(this);
+    }
+
+    assets(){
+        return pageLog;
     }
 
     searchBarUpdate(){
@@ -154,7 +196,7 @@ module.exports = class wv extends HTMLElement{
     updateTabTitle(title,explicitSet){
         var tab = this.parentElement.tab;
 
-        console.log('tab = ' + title)
+        // console.log('tab = ' + title)
         tab.querySelector('tb-title').innerHTML = title.title;
     }
 
@@ -162,5 +204,9 @@ module.exports = class wv extends HTMLElement{
         var tab = this.parentElement.tab;
 
         tab.querySelector('tb-icon').querySelector('img').src = favs.favicons[0];
+    }
+
+    pkgSite(){
+        packagePage(this.view.src,this.view.getTitle());
     }
 }

@@ -20,6 +20,7 @@ function preprocess(filename,replacements){
     var txt = require('fs').readFileSync(__dirname+'/'+filename).toString();
     for(var i in replacements){
         var regex = new RegExp(i,'g');
+        // console.log(regex)
         txt=txt.replace(regex,replacements[i]);
     }
 
@@ -39,6 +40,8 @@ function doTheme(theme){
     var tabRight = "hsl(0,0%,70%)";
     var black = "hsl(0,0%,50%)";
     var bright = 'white';
+    var textColor = 'black'
+    var imgFilter = 'none';
 
     if(theme == 'bright'){
         bright = "hsl(0,0%,80%)";
@@ -50,12 +53,14 @@ function doTheme(theme){
     }
 
     if(theme == 'dark'){
-        darkgray = "hsl(0,0%,20%)";
-        lightgrey = "hsl(0,0%,10%)";
-        lighter = "hsl(0,0%,0%)";
-        tabRight = "hsl(0,0%,30%)";
-        black = "hsl(0,0%,50%)";
-        bright = 'black';
+        darkgray = "#404754";
+        lightgrey = "#282c34";
+        lighter = "#181a1f";
+        tabRight = "#2c313c";
+        black = "#181a1f";
+        bright = '#323842';
+        textColor = 'white';
+        imgFilter = 'invert(1)';
     }
 
 
@@ -65,16 +70,17 @@ function doTheme(theme){
         "darkgrey":darkgray,
         "lightgrey":lightgrey,
         "lightgray":lightgrey,
-        "rgb(220,220,220)":lighter,
         "rgb(50,50,50)":tabRight,
         "black":black,
         "#ffffff":bright,
-        "white":bright,
-        "whitesmoke":bright
+        ": white": ':' + bright,
+        "whitesmoke":bright,
+        "#000000" : textColor,
+        "invert\\(0\\)" : imgFilter
     });
 
     document.querySelector('head').appendChild(normalStyle);
 }
 
 
-doTheme('b');
+doTheme('dar k');

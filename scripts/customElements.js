@@ -76,6 +76,24 @@ window.makeNewWin = function makeNewWin(){
     win.loadFile(__dirname+'/../index.html');
 }
 
+window.hideUI = function hideUI(){
+    [document.querySelector('tabBar'), document.querySelector('toolbar'), document.querySelector('book-marks')].forEach((e,i,a)=>{
+        e.style.display = 'none';
+    });
+
+    document.querySelector('chrome').style.display = 'block';
+    document.querySelector('multi-view').style.height = 'calc(100vh - 30px)'
+}
+
+window.showUI = function showUI(){
+    [document.querySelector('tabBar'), document.querySelector('toolbar'), document.querySelector('book-marks')].forEach((e,i,a)=>{
+        e.style.display = '';
+    });
+
+    document.querySelector('chrome').style.display = 'none';
+    document.querySelector('multi-view').style.height = '';
+}
+
 /**
  * Opens up the settings page so the user can edit their settings
  */
@@ -321,3 +339,5 @@ def('st-find');
 def('st-multi');
 def('st-settings');
 def('st-zs');
+def('show-ui');
+def('hide-ui');

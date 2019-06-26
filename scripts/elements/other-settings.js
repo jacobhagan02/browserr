@@ -12,6 +12,7 @@ module.exports = class extends HTMLElement {
         <st-br></st-br>
 
         <st-find>Find...</st-find>
+        <hide-ui>Hide UI</hide-ui>
         <st-br></st-br>
 
         <st-history>History</st-history>

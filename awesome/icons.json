@@ -9,5 +9,6 @@
     "newTab":"solid/plus-square.svg",
     "addFavorite":"solid/star.svg",
     "zoomIn":"solid/search-plus.svg",
-    "zoomOut":"solid/search-minus.svg"
+    "zoomOut":"solid/search-minus.svg",
+    "unfullscreen":"solid/compress-arrows-alt.svg"
 }

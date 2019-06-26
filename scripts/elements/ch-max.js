@@ -14,10 +14,12 @@ function maximize(){
 }
 
 require('electron').remote.getCurrentWindow().on('maximize',()=>{
+    console.log('max')
     document.querySelector('ch-max').setMaxBtn(2);
 });
 
 require('electron').remote.getCurrentWindow().on('unmaximize',()=>{
+    console.log('min')
     document.querySelector('ch-max').setMaxBtn(1);
 });
 
@@ -37,6 +39,10 @@ module.exports = class extends HTMLElement {
     }
 
     setMaxBtn(num){
-        this.innerHTML = require('../icons.js')['winmax' + ((num==2) ? "2" : "")]
+        console.log(num)
+        var icn = (num===2) ? "2" : "";
+        var file = require('../icons.js')['winmax' + icn]
+        console.log(file)
+        document.querySelectorAll('ch-max').forEach((element,key,parent)=>element.innerHTML = file);
     }
 }

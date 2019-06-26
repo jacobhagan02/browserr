@@ -16,18 +16,8 @@
 html,body{margin:0;overflow: hidden;font-family: regular;font-size:14px;color:#000000;}
 *{box-sizing: border-box; transition-duration: 0.3s; outline: none;}
 
-::-webkit-scrollbar {
-    width: 12px;
-}
- 
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    border-radius: 10px;
-}
- 
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+img { 
+    filter: invert(0);
 }
 
 tabBar,page-tabs,chrome{
@@ -146,23 +136,48 @@ ch-exit{right:0;}
 ch-max{right:45px;}
 ch-min{right:90px;}
 
-#WINMin > rect {
-    fill: hsl(0,0%,0%);
+show-ui{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 30px;
+    -webkit-app-region:no-drag;
 }
 
-#WINMAX > rect {
-    stroke: hsl(0,0%,0%);
+show-ui:hover{
+    background-color: darkgray;
+}
+
+#WINMin > rect {
+    fill: hsl(0,0%,0%);
 }
 
 #WINX > polygon {
     fill: hsl(0,0%,0%);
 }
 
-svg{display:inline-block;margin:0;}
+svg{display:inline-block;margin:0;filter: invert(0); }
+
+
+#WINMAX *{
+    stroke: #000000;
+    fill : none;
+}
 
 tb-icon{margin-right: 2.5px;height:100%;display: inline-block;position: relative;top: -6.5px;}
 
-search-bar{background:rgb(220,220,220);height:25px;display:inline-block;flex-grow:9;margin-right:5px;margin-left:5px; border-radius: 15px;padding-top:3px;padding-left:15px;}
+search-bar{
+    background: hsla(0, 0%, 0%, 0.1);
+    height:25px;
+    display:inline-block;
+    flex-grow:9;
+    margin-right:5px;
+    margin-left:5px;
+     border-radius: 15px;
+     padding-top:3px;
+     padding-left:15px;
+}
 
 other-settings{
     padding:10px;
@@ -178,7 +193,7 @@ other-settings{
     /* border-bottom-right-radius: 0px; */
     border-style:solid;
     border-width:2px;
-    border-color:white;
+    border-color: white ;
     z-index: 99;
 }
 
@@ -193,7 +208,7 @@ settings-btn{
 
     /* border-style:solid; */
     /* border-width:2px; */
-    /* border-color:white; */
+    /* border-color: white ; */
     border-radius: 50%;
     /* border-bottom:none; */
 }
@@ -204,11 +219,13 @@ settings-btn:hover{
     /* border-color:black; */
 }
 
-st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,/* m-settings, */st-label,st-pkg,st-multi,st-settings,st-find,st-dev,st-zs{
+other-settings > *,st-btn,st-win,st-br,st-history,st-bookmarks,page-zoom,adv-settings,dev-tools,/* m-settings, */st-label,st-pkg,st-multi,st-settings,st-find,st-dev,st-zs{
     display:block;
     width:130px;
+    font-weight: 500;
     padding:5px;
-    border: 1px solid white;
+    border: 1px solid whitesmoke;
+    font-size: 13px;
     /* border-radius:5px; */
     -webkit-user-select: none;
     color:#000000;
@@ -220,7 +237,7 @@ page-zoom{
     justify-content: space-evenly;
 }
 
-st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,/* m-settings:hover, */page-zoom:hover,st-label:hover,st-pkg:hover,st-multi:hover,st-settings:hover,st-find:hover,st-dev:hover,st-zs:hover{
+hide-ui:hover, st-btn:hover,st-win:hover,st-history:hover,st-bookmarks:hover,adv-settings:hover,dev-tools:hover,/* m-settings:hover, */page-zoom:hover,st-label:hover,st-pkg:hover,st-multi:hover,st-settings:hover,st-find:hover,st-dev:hover,st-zs:hover{
     border: 1px solid black;
     background: lightgray;
     /* padding: 7.5px; */
@@ -347,7 +364,6 @@ b-mark{
 b-mark:hover{
     background:darkgray;
     border-color:lightgray;
-    color:white;
 }
 
 b-title{
@@ -380,7 +396,7 @@ full-query{
     border-color:black;
     padding:10px;
     box-shadow: 0 0 50px 700px #00000070;
-    background:whitesmoke;
+    background: white smoke;
 }
 
 full-query h2{
@@ -417,7 +433,7 @@ add-mark{
     float:right;
     width: 25px;
     height:25px;
-    background: inherit;
+    background: transparent;
     border-radius: 50%;
     position: relative;
     top: -3px;
@@ -528,13 +544,13 @@ web--view,webview{
 multi-view.enabled{
     display:grid;
     overflow: none;
-    height:calc(100vh - 80px);
+    height:calc(100vh - 110px);
 }
 
 multi-view{
     display:block;
     overflow:none;
-    height:calc(100vh - 80px);
+    height:calc(100vh - 110px);
 }
 
 text-finder{

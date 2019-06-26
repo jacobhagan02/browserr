@@ -53,6 +53,7 @@ class reader{
     /**
      * saves the items
      * @param {object} obj 
+     * @requires ./editUser 
      */
     static writeFromObj(obj){
         require('./editUser.js').set('b',obj);

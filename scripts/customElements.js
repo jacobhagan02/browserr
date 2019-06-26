@@ -12,21 +12,14 @@ function def(name){
  * @param {function} callback a callback function that will call with the new url
  */
 window.urlify = function urlify(text,callback){
-    var es = require('url-exists');
-
-    es("https://" + text, (err,bool)=>{
-        if(bool){
-            callback("https://"+text);
-        }else{
-            es("http://" + text, (err,bool)=>{
-                if(bool){
-                    callback("http://" + text);
-                }else{
-                    callback("https://" + window.searchProvider + "/search?q=" + text.replace(/ /g, '+'));
-                }
-            });
-        }
-    });
+    if(text.indexOf(' ')!== -1 || text.search(/\.\w/g) === -1){
+        callback('https://' + window.searchProvider + '/search?q=' + encodeURIComponent(text))
+    }else if (text.search(/https:\/\//g) !== -1 || text.search(/http:\/\//,g) !== -1) {
+        callback('https://' + text)
+    }
+    else{
+        callback(text);
+    }
 }
 
 /**
@@ -81,6 +74,24 @@ window.makeNewWin = function makeNewWin(){
     });
 
     win.loadFile(__dirname+'/../index.html');
+}
+
+window.hideUI = function hideUI(){
+    [document.querySelector('tabBar'), document.querySelector('toolbar'), document.querySelector('book-marks')].forEach((e,i,a)=>{
+        e.style.display = 'none';
+    });
+
+    document.querySelector('chrome').style.display = 'block';
+    document.querySelector('multi-view').style.height = 'calc(100vh - 30px)'
+}
+
+window.showUI = function showUI(){
+    [document.querySelector('tabBar'), document.querySelector('toolbar'), document.querySelector('book-marks')].forEach((e,i,a)=>{
+        e.style.display = '';
+    });
+
+    document.querySelector('chrome').style.display = 'none';
+    document.querySelector('multi-view').style.height = '';
 }
 
 /**
@@ -264,6 +275,10 @@ function downloadPage(){
     
 }
 
+function readingView(){
+    document.querySelectorAll('script, iframe, nav, header, footer, noscript, div, video').forEach((e)=>e.parentElement.removeChild(e));
+}
+
 const settings = window.settings;
 require('./docload.js');
 var svgs = require('./icons.js');
@@ -318,3 +333,15 @@ def('m-settings');
 def('text-finder');
 def('st-pkg');
 def('settings-btn');
+def('omni-box');
+def('current-page');
+def('page-suggestion');
+def('all-escape');
+def('tab-info');
+def('st-dev');
+def('st-find');
+def('st-multi');
+def('st-settings');
+def('st-zs');
+def('show-ui');
+def('hide-ui');

@@ -10,21 +10,14 @@ window.indicator = window.document.querySelector('ind');
 
 
 window.urlify = function urlify(text,callback){
-    var es = require('url-exists');
-
-    es("https://" + text, (err,bool)=>{
-        if(bool){
-            callback("https://"+text);
-        }else{
-            es("http://" + text, (err,bool)=>{
-                if(bool){
-                    callback("http://" + text);
-                }else{
-                    callback("https://" + window.searchProvider + "/search?q=" + text.replace(/ /g, '+'));
-                }
-            });
-        }
-    });
+    if(text.indexOf(' ')!== -1 || text.search(/\.\w/g) === -1){
+        callback(window.searchProvider + '/search?q=' + encodeURIComponent(text))
+    }else if (text.search(/https:\/\//g) !== -1 || text.search(/http:\/\//,g) !== -1) {
+        callback('https://' + text)
+    }
+    else{
+        callback(text);
+    }
 }
 
 window.makeWebv = function makeWebv(url = "https://google.com"){

@@ -10,11 +10,17 @@ function packagePage(url,title){
     // Make this just a shortcut to the main app with command line args for the url
 }
 
+
+
 function attachRedirect(d,c){
+    
+    // console.log(d);
+
     if(d.resourceType == 'mainFrame'){
         window.settings.h[window.settings.h.length - 1].pageLog = pageLog;
-        console.log(window.settings.h)
+        // console.log(window.settings.h)
         pageLog = [d.url];
+        // console.log(d)
     }else{
         pageLog.push(d.url);
     }
@@ -24,7 +30,10 @@ function attachRedirect(d,c){
 
 function handleReady(){
     // console.log(this.getWebContents())
+    // console.log(this.getWebContents().session.webRequest)
     this.getWebContents().session.webRequest.onBeforeRequest(attachRedirect);
+    this.blur();
+    this.focus();
 }
 
 function handleWindowRequest(event){
@@ -33,6 +42,7 @@ function handleWindowRequest(event){
     disposition = event.disposition; /* can be one of: default, foreground-tab, background-tab, new-window, save-to-disk, other. */
     options = event.options; /* like if you were to make a new browserWindow, its the exact same options as that */
 
+    console.log(event)
     // for now just make a new tab, but later add functionality for stuff like background tabs and stuff.
     // downloads will be webview.downloadFile()
     // console.log(event)
@@ -40,7 +50,8 @@ function handleWindowRequest(event){
 }
 
 function addToHistory(url,title){
-    History.addItem({url:url,title:title,date:Date.now()});
+    History.addItem({url:url,title:title.replace(/</g,'&#60;').replace(/>/g,'&#62;'),date:Date.now()});
+    
 }
 
 function handleTargetUrl(event){
@@ -61,12 +72,13 @@ function handleStartLoad(e){
     window.document.querySelector('ind').innerHTML = 'loading...';
 
     this.parentElement.tab.querySelector('tb-title').innerHTML = 'loading...'
+    document.querySelector('omni-box').hide()
 }
 
 function handleStopLoad(e){
     window.document.querySelector('ind').display = 'none';
 
-    this.parentElement.tab.querySelector('tb-title').innerHTML = this.getTitle();
+    this.parentElement.tab.querySelector('tb-title').innerHTML = this.getTitle().replace(/</g,'&#60;').replace(/>/g,'&#62;');
 }
 
 function handleURLUpdate(event){
@@ -75,6 +87,14 @@ function handleURLUpdate(event){
     // console.log(this.src)
     addToHistory(event.url,event.srcElement.getTitle());
 
+    if(window.settings.suggestedURLS == undefined){
+        window.settings.suggestedURLS = [];
+    }
+    var obj = {}
+    obj.url = event.url;
+    obj.icon = event.target.parentElement.favicon;
+    window.settings.suggestedURLS.push(obj);
+    require('../editUser.js').save()
     // console.log(event);
 }
 
@@ -110,7 +130,9 @@ module.exports = class wv extends HTMLElement{
             var ws = window.document.createAttribute("disablewebsecurity");
             var webp = window.document.createAttribute("webpreferences");
             var full = window.document.createAttribute("allowfullscreen");
-            if(window.settings.homePage == undefined){
+            if(this.hasAttribute('src')){
+                a.value = this.getAttribute('src')
+            }else if(window.settings.homePage == undefined){
                 require('../editUser.js').set('homePage','https://www.google.com');
                 a.value = 'https://www.google.com';
             }else{
@@ -136,6 +158,7 @@ module.exports = class wv extends HTMLElement{
             web.addEventListener('enter-html-full-screen', handleFullScreen);
             web.addEventListener('leave-html-full-screen', handleNormalScreen);
             web.addEventListener('dom-ready',handleReady);
+            // web.addEventListener('click',closeSuggestions);
             web.setAttribute('preload',`file://${__dirname}/../webviewPreload.js`);
            
 
@@ -197,12 +220,13 @@ module.exports = class wv extends HTMLElement{
         var tab = this.parentElement.tab;
 
         // console.log('tab = ' + title)
-        tab.querySelector('tb-title').innerHTML = title.title;
+        tab.querySelector('tb-title').innerHTML = title.title.replace(/</g,'&#60;').replace(/>/g,'&#62;');
     }
 
     otherFavicon(favs){
         var tab = this.parentElement.tab;
 
+        this.favicon = favs.favicons[0];
         tab.querySelector('tb-icon').querySelector('img').src = favs.favicons[0];
     }
 

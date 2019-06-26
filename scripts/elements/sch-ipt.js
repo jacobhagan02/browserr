@@ -1,7 +1,10 @@
 module.exports = class extends HTMLElement {    
     constructor(){
-        super();
+        super();        
+    }
 
+    connectedCallback(){
+        // this.addEventListener('click',e=>console.log(e))
         this.addEventListener('keypress', (k)=>{
 //            console.log(k.key);
 
@@ -12,19 +15,32 @@ module.exports = class extends HTMLElement {
                     getCurrentView().src=this.innerText;
                     getCurrentView().focus();
                     ele.innerHTML = this.innerText;
+                    if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
                 } else {
                     urlify(this.innerText,(url)=>{
                         //console.log(url);
                         getCurrentView().src=url;
                         getCurrentView().focus();
                         ele.innerHTML = url;
+                        if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
                     });
                 }
+                document.querySelector('tb-title').innerHTML = 'loading...'
+                document.querySelector('omni-box').hide()
                 
 
                 
                 //updateTabIcon(this.innerHTML);
+            }else{
+                document.querySelector('omni-box').change(this.innerText.trim() + k.key);
             }
         });
     }
+
+    set html(t){
+        console.log('here');
+        this.innerHTML = t;
+        console.log(this.innerHTML); 
+    }
+
 }

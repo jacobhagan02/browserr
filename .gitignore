@@ -3,3 +3,7 @@ electron-quick-start-linux-x64
 START.bat
 scripts/history.json
 .github/
+.vscode/tasks.json
+dist
+.DS_Store
+.vscode

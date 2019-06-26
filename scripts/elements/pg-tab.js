@@ -12,6 +12,40 @@ function handlePin(){
 
 }
 
+function closeTab(tab){
+    //console.log(window.currentTab.tRemove)
+    tab.tRemove();
+}
+
+function handleRemove(current){
+    if(tabs.children.length == 0){
+        require('electron').remote.getCurrentWindow().close();
+    } else{
+        var tab = document.querySelector(`web--view[num='${current.num}']`).tab;
+
+        window.currentTab = tab;
+        window.currentTab.show();
+/** /    console.log(tab.view.show);
+        console.log(tab.setAttribute);
+        console.log(tab); /** /
+
+        tab.view.show();
+        tab.setAttribute('show','');
+        window.currentTab = tab;
+        tab.classList.add('tabSelect');
+
+/** /    console.log(tab.view.show);
+        console.log(tab.setAttribute);
+        console.log(currentTab); /**/
+
+        if(tabs.offsetTop < 23){
+            handleTooSmall();
+        }
+    }
+    if(document.querySelector('all-escape')){document.querySelector('all-escape').remove()}
+    document.querySelector('multi-view').refresh();
+}
+
 function newWinBig(openurl){
     var win = new BrowserWindow({
         width: 800,
@@ -38,10 +72,12 @@ module.exports = class extends HTMLElement {
     }
 
     connectedCallback(){
-        this.innerHTML = "<tb-icon src='images.png'></tb-icon><tb-title>New Tab</tb-title><tb-remove><tb-remove>";
+        this.innerHTML = "<tb-icon src='images.png'></tb-icon><tb-title>New Tab</tb-title><tb-remove></tb-remove><tab-info></tab-info>";
         this.addEventListener("click",this.show);
         this.addEventListener("click",this.searchBarUpdate2);
-        this.addEventListener('contextmenu',this.contextMenu)
+        this.addEventListener('contextmenu',this.contextMenu);
+        this.addEventListener('mouseover', this.hover);
+        this.addEventListener('mouseleave', this.leave);
 
         this.view = document.querySelector('web--view[num="'+this.num+'"]');
 
@@ -52,6 +88,14 @@ module.exports = class extends HTMLElement {
         if(tabs.offsetTop > 27){
             handleTooBig();
         }
+    }
+
+    hover(){
+        this.querySelector('tab-info').show();
+    }
+
+    leave(){
+
     }
 
     contextMenu(){
@@ -84,7 +128,7 @@ module.exports = class extends HTMLElement {
             assWin.openDevTools();
 
             var arg = "['" + ele.view.assets().join("','").toString() + "']";
-            console.log(arg);   
+            // console.log(arg);   
 
             assWin.webContents.executeJavaScript('addAssets(' + arg + ')',function(){console.log(arguments)});
         }
@@ -144,7 +188,7 @@ module.exports = class extends HTMLElement {
         this.setAttribute('show','');
         currentTab = this;
 
-        this.setAttribute('class','tabSelect');
+        this.classList.add('tabSelect');
     }
 
     hide(){
@@ -163,39 +207,29 @@ module.exports = class extends HTMLElement {
         this.setAttribute("num",n);
     }
 
-    remove(){
+    remove(){/*
+        if(this.parentElement.parentElement.children[0] == this.parentElement)
+            handleRemove(this.parentElement.nextElementSibling);
+        else
+            handleRemove(this.parentElement.previousElementSibling);
 
         if(this.parentElement.getAttribute('unclosable')!='true'){
             this.parentElement.view.remove();
             tabs.removeChild(this.parentElement);
-    
-            if(tabs.children.length == 0){
-                require('electron').remote.getCurrentWindow().close();
-            } else{
-                tabs.children[tabs.children.length - 1].show();
-                if(tabs.offsetTop < 17){
-                    handleTooSmall();
-                }
-            }
-    
-            document.querySelector('multi-view').refresh();
-        }
+        }*/
+        // window.currentTab.tRemove();
+        closeTab(document.querySelector('pg-tab[num="' + this.parentElement.num + '"]'));
     }
 
     tRemove(){
+        if(this.parentElement.children[0] == this)
+            handleRemove(this.nextElementSibling);
+        else
+            handleRemove(this.previousElementSibling);
+
         if(this.getAttribute('unclosabe')!='true'){
             this.view.remove();
             tabs.removeChild(this);
-    
-            if(tabs.children.length == 0){
-                require('electron').remote.getCurrentWindow().close();
-            } else{
-                tabs.children[tabs.children.length - 1].show();
-                if(tabs.offsetTop < 23){
-                    handleTooSmall();
-                }
-            }
         }
-
     }
 }

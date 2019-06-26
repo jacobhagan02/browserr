@@ -8,6 +8,6 @@ module.exports = class extends HTMLElement {
     connectedCallback(){
         let boxSize = 23;
 
-        this.innerHTML = `<img src="${this.getAttribute('href')}" style="position:relative;top:1px;" width=${boxSize} height=${boxSize} />`
+        this.innerHTML = `<img src="${this.getAttribute('href')}" style="filter:none;position:relative;top:1px;" width=${boxSize} height=${boxSize} />`
     }
 }

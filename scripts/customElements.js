@@ -275,6 +275,10 @@ function downloadPage(){
     
 }
 
+function readingView(){
+    document.querySelectorAll('script, iframe, nav, header, footer, noscript, div, video').forEach((e)=>e.parentElement.removeChild(e));
+}
+
 const settings = window.settings;
 require('./docload.js');
 var svgs = require('./icons.js');

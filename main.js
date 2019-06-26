@@ -33,7 +33,8 @@ app.on('ready', createWindow);
 app.on('window-all-closed', ()=>{ if (process.platform !== 'darwin') app.quit(); });
 app.on('activate', ()=> { if (mainWindow === null) createWindow() });
 
-let user = JSON.parse('{"name":"default","ZoomLevel":1,"ZoomIncrement":0.05,"font-weight":"400","iconPack":"google","history":true,"bookmarks":true,"branch":"nightly","h":[],"b":{},"pass":""}');
+
+let user = JSON.parse('{"name":"default","ZoomLevel":1,"ZoomIncrement":0.05,"font-weight":"400","iconPack":"google","history":true,"bookmarks":true,"branch":"beta","h":[],"b":{},"pass":""}');
 
 ipcMain.on('set-user',(event,value)=>{
     user = value;

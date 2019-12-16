@@ -46,7 +46,7 @@
     "get-website-favicon": "0.0.7",
     "jquery": "^3.4.1",
     "json5": "^2.1.0",
-    "npm": "^6.9.0",
+    "npm": "^6.13.4",
     "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
